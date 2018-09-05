@@ -7,6 +7,8 @@ COLOR_ROWS = 80
 COLOR_COLS = 250
 colorArray = np.zeros((COLOR_ROWS, COLOR_COLS, 3), dtype=np.uint8)
 cv2.imshow('Color', colorArray)
+pixels = []
+
 
 def on_mouse_click(event, x, y, flags, userParams):
     if event == cv2.EVENT_LBUTTONDOWN:
@@ -23,8 +25,10 @@ def on_mouse_click(event, x, y, flags, userParams):
                     fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.8, color=textColor)
         cv2.imshow('Color', colorArray)
 
-def nothing(jnk):
+
+def nothing():
     pass
+
 
 red = (0, 0, 255)
 green = (0, 255, 0)
@@ -36,17 +40,17 @@ cv2.createTrackbar('Switch Threshold', winName, 0, 2, nothing)
 cv2.createTrackbar('Threshold', winName, 100, 255, nothing)
 cv2.createTrackbar('Contour', winName, 1, 10, nothing)
 
-if cap.isOpened() == False:
+if not cap.isOpened():
     print('Unable to access camera')
 else:
     print('Start grabbing, press a key on live window to terminate')
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
-    while (cap.isOpened()):
+    while cap.isOpened():
         start_time = time.time()
         ret, frame = cap.read()
-        if ret == False:
+        if not ret:
             print('Unable to grab from the picamera')
             break
 
@@ -60,7 +64,7 @@ else:
 
         src = cv2.split(frame)
 
-        #-----Color frame and operation-----
+        # -----Color frame and operation-----
 
         and_img1 = cv2.bitwise_and(src[0], rev_img)
         and_img2 = cv2.bitwise_and(src[1], rev_img)
@@ -70,16 +74,22 @@ else:
 
         cv2.setMouseCallback(winName, on_mouse_click)
 
-        #-----Gray frame and operation-----
+        # -----Gray frame and operation-----
 
-        #and_img = cv2.bitwise_and(frame, rev_img)
+        # and_img = cv2.bitwise_and(frame, rev_img)
 
-        #-----Drawing Contour-----
+        # -----Drawing Contour-----
 
         im2, contours, hierarchy = cv2.findContours(thresh_img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         cv2.drawContours(and_img, contours, -1, red, cnt)
 
         # ----------
+
+        for i in range(640):
+            px = and_img[100, i]
+            if px[0] > 0:
+                pixels.append(px)
+                print(px)
 
         if swc == 0:
             cv2.imshow(winName, and_img)
@@ -89,10 +99,13 @@ else:
             cv2.imshow(winName, thresh_img)
 
         key = cv2.waitKey(1) & 0xFF
+        fps = cap.get(cv2.CAP_PROP_FPS)
+        print("Frames per second using video.get(cv2.CAP_PROP_FPS) : {0}".format(fps))
         print("--- %s seconds ---" % (time.time() - start_time))
-        if key == ord("q"):
-            break
 
+        if key == ord("q"):
+            print(pixels)
+            break
     print('Closing the camera')
 
 cap.release()
