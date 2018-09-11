@@ -17,10 +17,11 @@
       <file leaf-file-name="RGB_Detect.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
+            <state relative-caret-position="2099">
+              <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#798#802#0" />
               </folding>
             </state>
           </provider>
@@ -193,7 +194,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.0890625" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.109375" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5005208" side_tool="true" weight="0.19137749" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947917" weight="0.26603577" />
@@ -223,10 +224,74 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Img_Extraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Try.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2142">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Img_Extraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Try.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2184">
+          <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Img_Extraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Try.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2247">
           <caret line="107" column="17" lean-forward="true" selection-start-line="107" selection-start-column="17" selection-end-line="107" selection-end-column="17" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -247,6 +312,7 @@
           <caret line="27" column="8" lean-forward="true" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -267,6 +333,7 @@
           <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -287,6 +354,7 @@
           <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -307,6 +375,7 @@
           <caret line="50" column="17" lean-forward="true" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -331,6 +400,7 @@
           <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -348,6 +418,7 @@
           <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -372,6 +443,7 @@
           <caret line="41" column="30" lean-forward="true" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -396,6 +468,7 @@
           <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -413,6 +486,7 @@
           <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -423,6 +497,7 @@
           <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -433,6 +508,7 @@
           <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -443,6 +519,7 @@
           <caret line="29" column="24" lean-forward="true" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -453,6 +530,7 @@
           <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -463,6 +541,7 @@
           <caret line="49" column="43" lean-forward="true" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
@@ -473,14 +552,12 @@
           <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cam1.jpg" />
-    <entry file="file://$PROJECT_DIR$/Try.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Img_Extraction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -488,12 +565,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Try.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="104" lean-forward="true" selection-start-line="104" selection-end-line="104" />
+        <state relative-caret-position="2099">
+          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#798#802#0" />
           </folding>
         </state>
       </provider>
