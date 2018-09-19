@@ -26,27 +26,56 @@ class Window(QWidget):
 
         self.image = None
         self.outImage = None
-        self.newfont = QFont("Times", 16, QFont.Bold)
+        self.font1 = QFont("Times", 14)
+        self.font2 = QFont("Times", 10)
+
+        vbox1 = QVBoxLayout()
+        hbox1 = QHBoxLayout()
+        hbox = QHBoxLayout()
+        hbox.addLayout(vbox1)
+        hbox.addLayout(hbox1)
 
         # -------------------------------------------------------------------------------------------------------------
-        # Image Label
+        # Producing Color Elements
         # -------------------------------------------------------------------------------------------------------------
+
+        # Title
+        self.rgbTitle = QLabel('Measured Color')
+        self.rgbTitle.setFont(self.font1)
+
+        # RGB Label
+        self.rgbLabel = QLabel()
+        self.rgbLabel.setFixedWidth(200)
+        self.rgbLabel.setFixedHeight(200)
+
+        # RBG Value
+        self.rgbValue = QLabel()
+        self.rgbValue.setFont(self.font2)
+
+        # RGB Value Label
+        self.rgbValueLabel = QLabel('RGB Value: ')
+        self.rgbValueLabel.setFont(self.font2)
+
+        # Box Operations
+        info_g_box1 = QGroupBox("Producing Color")
+        info_g_box_layout = QGridLayout()
+        info_g_box1.setLayout(info_g_box_layout)
+
+        info_g_box_layout.addWidget(self.rgbTitle, 1, 0)
+        info_g_box_layout.addWidget(self.rgbLabel, 2, 0)
+        info_g_box_layout.addWidget(self.rgbValue, 3, 1)
+        info_g_box_layout.addWidget(self.rgbValueLabel, 3, 0)
+
+        # -------------------------------------------------------------------------------------------------------------
+        # Camera Elements
+        # -------------------------------------------------------------------------------------------------------------
+
+        # Image Label
         self.imgLabel = QLabel()
         self.imgLabel.setFixedHeight(480)
         self.imgLabel.setFixedWidth(640)
 
-        # -------------------------------------------------------------------------------------------------------------
-        # RGB Label
-        # -------------------------------------------------------------------------------------------------------------
-        self.rgbLabel = QLabel()
-        self.rgbLabel.setFixedWidth(250)
-        self.rgbLabel.setFixedHeight(80)
-        self.rgbLabel.setFont(self.newfont)
-        self.rgbLabel.setAlignment(Qt.AlignCenter)
-
-        # -------------------------------------------------------------------------------------------------------------
-        # Slider / For threshold
-        # -------------------------------------------------------------------------------------------------------------
+        # Slider for threshold
         self.trsSlider = QSlider(Qt.Horizontal)
         self.trsSlider.setMinimum(0)
         self.trsSlider.setMaximum(255)
@@ -54,19 +83,25 @@ class Window(QWidget):
         self.trsSlider.setTickInterval(10)
         self.trsSlider.setTickPosition(QSlider.TicksBelow)
 
+        # Box Operations
+        info_g_box2 = QGroupBox("Camera")
+        info_g_box_layout2 = QGridLayout()
+        info_g_box2.setLayout(info_g_box_layout2)
+        info_g_box2.setMinimumWidth(650)
+
+        info_g_box_layout2.addWidget(self.imgLabel, 1, 0)
+        info_g_box_layout2.addWidget(self.trsSlider, 2, 0)
+
         # -------------------------------------------------------------------------------------------------------------
         # Box Operations
         # -------------------------------------------------------------------------------------------------------------
-        v_box = QVBoxLayout()
-        v_box.addWidget(self.imgLabel)
-        v_box.addWidget(self.rgbLabel)
-        v_box.addWidget(self.trsSlider)
 
-        self.setLayout(v_box)
+        vbox1.addWidget(info_g_box1)
+        hbox1.addWidget(info_g_box2)
+
+        self.setLayout(hbox)
         self.setWindowTitle('PyQt5')
-
         self.start_webcam()
-
         self.show()
 
     def start_webcam(self):
@@ -131,10 +166,10 @@ class Window(QWidget):
         sumAll = [sumB, sumG, sumR]
 
         # -------------------------------------------------------------------------------------------------------------
-        # Image Label / Setting text and background color
+        # RGB Values / Setting text and background color
         # -------------------------------------------------------------------------------------------------------------
         self.rgbLabel.setStyleSheet('color: red; background-color: rgb' + str((sumB, sumG, sumR)))
-        self.rgbLabel.setText(str(sumAll))
+        self.rgbValue.setText(str(sumAll))
 
         pixels.clear()  # Reset arrays
         r.clear()
