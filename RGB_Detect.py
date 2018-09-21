@@ -7,11 +7,14 @@ COLOR_ROWS = 80
 COLOR_COLS = 250
 colorArray = np.zeros((COLOR_ROWS, COLOR_COLS, 3), dtype=np.uint8)
 colorArray2 = np.zeros((COLOR_ROWS, COLOR_COLS, 3), dtype=np.uint8)
-cv2.imshow('Color', colorArray)
+cv2.imshow('RGB Pixel', colorArray)
 pixels = []
 r = []
 g = []
 b = []
+sumR = 0
+sumG = 0
+sumB = 0
 
 
 def on_mouse_click(event, x, y, flags, userParams):
@@ -28,7 +31,7 @@ def on_mouse_click(event, x, y, flags, userParams):
 
         cv2.putText(colorArray, str(rgb), (20, COLOR_ROWS - 20),
                     fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.8, color=textColor)
-        cv2.imshow('Color', colorArray)
+        cv2.imshow('RGB Pixel', colorArray)
 
 
 def nothing():
@@ -108,11 +111,12 @@ else:
             sumB = int(sum(b) / len(b))                                          # variables
 
         sumAll = [sumR, sumG, sumB]
+        sumRGB = [sumB, sumG, sumR]
 
         colorArray2[:] = sumAll
-        cv2.putText(colorArray2, str(sumAll), (20, COLOR_ROWS - 20),
+        cv2.putText(colorArray2, str(sumRGB), (20, COLOR_ROWS - 20),
                     fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.8, color=red)
-        cv2.imshow('RGB', colorArray2)
+        cv2.imshow('RGB Average', colorArray2)
 
         pixels.clear()                                                          # Reset arrays
         r.clear()

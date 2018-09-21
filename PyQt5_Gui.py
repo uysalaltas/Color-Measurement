@@ -158,6 +158,10 @@ class Window(QWidget):
             g.append(i[1])
             b.append(i[2])
 
+        sumR = 0
+        sumG = 0
+        sumB = 0
+
         if len(r) != 0:
             sumR = int(sum(r) / len(r))
             sumG = int(sum(g) / len(g))
