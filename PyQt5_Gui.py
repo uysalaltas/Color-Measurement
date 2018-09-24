@@ -27,13 +27,11 @@ class Window(QWidget):
         self.image = None
         self.outImage = None
         self.font1 = QFont("Times", 14)
-        self.font2 = QFont("Times", 10)
+        self.font2 = QFont("Times", 11)
 
         vbox1 = QVBoxLayout()
-        hbox1 = QHBoxLayout()
+        vbox2 = QVBoxLayout()
         hbox = QHBoxLayout()
-        hbox.addLayout(vbox1)
-        hbox.addLayout(hbox1)
 
         # -------------------------------------------------------------------------------------------------------------
         # Producing Color Elements
@@ -42,29 +40,42 @@ class Window(QWidget):
         # Title
         self.rgbTitle = QLabel('Measured Color')
         self.rgbTitle.setFont(self.font1)
+        self.rgbTitle.setMinimumWidth(150)
+        self.rgbTitle.setAlignment(Qt.AlignCenter)
 
         # RGB Label
         self.rgbLabel = QLabel()
-        self.rgbLabel.setFixedWidth(200)
-        self.rgbLabel.setFixedHeight(200)
+        self.rgbLabel.setFixedWidth(150)
+        self.rgbLabel.setFixedHeight(150)
+        self.rgbLabel.setAlignment(Qt.AlignCenter)
 
         # RBG Value
         self.rgbValue = QLabel()
         self.rgbValue.setFont(self.font2)
+        self.rgbValue.setAlignment(Qt.AlignCenter)
 
         # RGB Value Label
         self.rgbValueLabel = QLabel('RGB Value: ')
         self.rgbValueLabel.setFont(self.font2)
+        self.rgbValueLabel.setAlignment(Qt.AlignCenter)
 
-        # Box Operations
-        info_g_box1 = QGroupBox("Producing Color")
-        info_g_box_layout = QGridLayout()
-        info_g_box1.setLayout(info_g_box_layout)
+        # Box1 Operations
+        rgb_frame_box = QGroupBox("Producing Color")
+        rgb_frame_box_layout = QGridLayout()
+        rgb_frame_box.setLayout(rgb_frame_box_layout)
+        rgb_frame_box.setMaximumWidth(220)
 
-        info_g_box_layout.addWidget(self.rgbTitle, 1, 0)
-        info_g_box_layout.addWidget(self.rgbLabel, 2, 0)
-        info_g_box_layout.addWidget(self.rgbValue, 3, 1)
-        info_g_box_layout.addWidget(self.rgbValueLabel, 3, 0)
+        # Box2 Operations
+        rgb_value_box = QGroupBox("RGB Values")
+        rgb_value_box_layout = QGridLayout()
+        rgb_value_box.setLayout(rgb_value_box_layout)
+        rgb_value_box.setMaximumWidth(220)
+
+        # Adding Widgets
+        rgb_frame_box_layout.addWidget(self.rgbTitle, 1, 0)
+        rgb_frame_box_layout.addWidget(self.rgbLabel, 2, 0)
+        rgb_value_box_layout.addWidget(self.rgbValueLabel, 1, 0)
+        rgb_value_box_layout.addWidget(self.rgbValue, 1, 1)
 
         # -------------------------------------------------------------------------------------------------------------
         # Camera Elements
@@ -84,20 +95,26 @@ class Window(QWidget):
         self.trsSlider.setTickPosition(QSlider.TicksBelow)
 
         # Box Operations
-        info_g_box2 = QGroupBox("Camera")
-        info_g_box_layout2 = QGridLayout()
-        info_g_box2.setLayout(info_g_box_layout2)
-        info_g_box2.setMinimumWidth(650)
+        img_frame_box = QGroupBox("Camera")
+        img_frame_box_layout = QGridLayout()
+        img_frame_box.setLayout(img_frame_box_layout)
+        img_frame_box.setMinimumWidth(650)
 
-        info_g_box_layout2.addWidget(self.imgLabel, 1, 0)
-        info_g_box_layout2.addWidget(self.trsSlider, 2, 0)
+        img_frame_box_layout.addWidget(self.imgLabel, 1, 0)
+        img_frame_box_layout.addWidget(self.trsSlider, 2, 0)
 
         # -------------------------------------------------------------------------------------------------------------
         # Box Operations
         # -------------------------------------------------------------------------------------------------------------
 
-        vbox1.addWidget(info_g_box1)
-        hbox1.addWidget(info_g_box2)
+        vbox1.addWidget(rgb_frame_box)
+        vbox1.addWidget(rgb_value_box)
+        vbox1.addStretch(1)
+
+        vbox2.addWidget(img_frame_box)
+
+        hbox.addLayout(vbox1)
+        hbox.addLayout(vbox2)
 
         self.setLayout(hbox)
         self.setWindowTitle('PyQt5')
