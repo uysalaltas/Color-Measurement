@@ -89,9 +89,9 @@ else:
         # and_img = cv2.bitwise_and(frame, rev_img)
 
         # -----Drawing Contour-----
-
-        im2, contours, hierarchy = cv2.findContours(thresh_img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        cv2.drawContours(and_img, contours, -1, red, cnt)
+        if cnt != 0:
+            im2, contours, hierarchy = cv2.findContours(thresh_img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+            cv2.drawContours(and_img, contours, -1, red, cnt)
 
         # -----RGB pixel operations-----
 
