@@ -46,7 +46,7 @@ blue = (255, 0, 0)
 winName = 'Target Detect'
 cv2.namedWindow(winName)
 cv2.createTrackbar('Switch Threshold', winName, 0, 2, nothing)
-cv2.createTrackbar('Threshold', winName, 100, 255, nothing)
+# cv2.createTrackbar('Threshold', winName, 100, 255, nothing)
 cv2.createTrackbar('Contour', winName, 1, 10, nothing)
 
 if not cap.isOpened():
@@ -64,12 +64,13 @@ else:
             print('Unable to grab from the picamera')
             break
 
-        trs = cv2.getTrackbarPos('Threshold', winName)                          # Get trackbar values
+        # trs = cv2.getTrackbarPos('Threshold', winName)                          # Get trackbar values
         swc = cv2.getTrackbarPos('Switch Threshold', winName)
         cnt = cv2.getTrackbarPos('Contour', winName)
 
         gray_img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)                      # BGR to grayscale
-        ret, thresh_img = cv2.threshold(gray_img, trs, 255, cv2.THRESH_BINARY)  # Threshold gray frame with trs
+        ret, thresh_img = cv2.threshold(gray_img, 0, 255,
+                                        cv2.THRESH_BINARY+cv2.THRESH_OTSU)      # Threshold gray frame with OTSU
         rev_img = (255 - thresh_img)                                            # Reverse threshold img
 
         src = cv2.split(frame)                                                  # Split RGB frame to R, G, B
