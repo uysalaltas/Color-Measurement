@@ -57,7 +57,7 @@ class Window(QWidget):
         # RGB Value Label
         self.rgbValueLabel = QLabel('RGB Value: ')
         self.rgbValueLabel.setFont(self.font2)
-        self.rgbValueLabel.setAlignment(Qt.AlignCenter)
+        self.rgbValueLabel.setAlignment(Qt.AlignLeft)
 
         # Box1 Operations
         rgb_frame_box = QGroupBox("Producing Color")
@@ -66,10 +66,10 @@ class Window(QWidget):
         rgb_frame_box.setMaximumWidth(220)
 
         # Box2 Operations
-        rgb_value_box = QGroupBox("RGB Values")
+        rgb_value_box = QGroupBox("Color Codes")
         rgb_value_box_layout = QGridLayout()
         rgb_value_box.setLayout(rgb_value_box_layout)
-        rgb_value_box.setMaximumWidth(220)
+        rgb_value_box.setFixedWidth(220)
 
         # Adding Widgets
         rgb_frame_box_layout.addWidget(self.rgbTitle, 1, 0)
@@ -154,7 +154,7 @@ class Window(QWidget):
     def color_detect(self, img):
         gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         self.trs = self.trsSlider.value()
-        ret, thresh_img = cv2.threshold(gray_img, self.trs, 255, cv2.THRESH_BINARY)
+        ret, thresh_img = cv2.threshold(gray_img, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
         rev_img = (255 - thresh_img)
 
         src = cv2.split(img)
