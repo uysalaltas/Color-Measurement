@@ -1,13 +1,20 @@
 import openpyxl
 
-kitap = openpyxl.load_workbook('RALtoRGB.xlsx')
-sayfa = kitap.get_sheet_by_name('Sayfa1')
-# sayfa.append(["RAL 7001"])
+r_code = []
+g_code = []
+b_code = []
+RAL = []
 
-list = []
-for i in sayfa['A']:
-    list.append(str(i.value))
+doc = openpyxl.load_workbook('RALtoRGB.xlsx')
+paper = doc.get_sheet_by_name('Sayfa1')
 
-print(list)
-kitap.save('RALtoRGB.xlsx')
-kitap.close()
+for i in paper['A']:
+    RAL.append(str(i.value))
+
+for r, g, b in zip(paper['B'], paper['C'], paper['D']):
+    r_code.append(r.value)
+    g_code.append(g.value)
+    b_code.append(b.value)
+
+doc.save('RALtoRGB.xlsx')
+doc.close()

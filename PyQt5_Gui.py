@@ -3,6 +3,7 @@ import cv2
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QImage, QPixmap, QFont
 from PyQt5.QtWidgets import *
+import Try
 
 COLOR_ROWS = 80
 COLOR_COLS = 250
@@ -31,6 +32,7 @@ class Window(QWidget):
 
         vbox1 = QVBoxLayout()
         vbox2 = QVBoxLayout()
+        vbox3 = QVBoxLayout()
         hbox = QHBoxLayout()
 
         # -------------------------------------------------------------------------------------------------------------
@@ -78,6 +80,29 @@ class Window(QWidget):
         rgb_value_box_layout.addWidget(self.rgbValue, 1, 1)
 
         # -------------------------------------------------------------------------------------------------------------
+        # Desired Color
+        # -------------------------------------------------------------------------------------------------------------
+
+        # Title
+        self.RALTitle = QLabel('RAL Codes')
+        self.RALTitle.setFont(self.font1)
+        self.RALTitle.setMinimumWidth(150)
+        self.RALTitle.setAlignment(Qt.AlignCenter)
+
+        # Combo Box
+        self.RALCombo = QComboBox()
+        self.RALCombo.addItems(Try.RAL)
+
+        # Box Operations
+        desired_color_box = QGroupBox("Desired Color")
+        desired_color_box_layout = QGridLayout()
+        desired_color_box.setLayout(desired_color_box_layout)
+
+        # Adding Widgets
+        desired_color_box_layout.addWidget(self.RALTitle, 1, 0)
+        desired_color_box_layout.addWidget(self.RALCombo, 2, 0)
+
+        # -------------------------------------------------------------------------------------------------------------
         # Camera Elements
         # -------------------------------------------------------------------------------------------------------------
 
@@ -111,10 +136,14 @@ class Window(QWidget):
         vbox1.addWidget(rgb_value_box)
         vbox1.addStretch(1)
 
-        vbox2.addWidget(img_frame_box)
+        vbox2.addWidget(desired_color_box)
+        vbox2.addStretch(1)
+
+        vbox3.addWidget(img_frame_box)
 
         hbox.addLayout(vbox1)
         hbox.addLayout(vbox2)
+        hbox.addLayout(vbox3)
 
         self.setLayout(hbox)
         self.setWindowTitle('PyQt5')
