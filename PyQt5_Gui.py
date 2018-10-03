@@ -87,20 +87,43 @@ class Window(QWidget):
         self.RALTitle = QLabel('RAL Codes')
         self.RALTitle.setFont(self.font1)
         self.RALTitle.setMinimumWidth(150)
-        self.RALTitle.setAlignment(Qt.AlignCenter)
+        self.RALTitle.setAlignment(Qt.AlignLeft)
+
+        # RAL Label
+        self.RALLabel = QLabel()
+        self.RALLabel.setFixedWidth(150)
+        self.RALLabel.setFixedHeight(150)
+        self.RALLabel.setAlignment(Qt.AlignCenter)
 
         # Combo Box
         self.RALCombo = QComboBox()
         self.RALCombo.addItems(Try.RAL)
+        self.RALCombo.currentIndexChanged.connect(self.apply)
+        self.RALCombo.setFixedWidth(100)
+
+        # RAL to RGB Label
+        self.RALtoRGBValue = QLabel('RAL to RGB: ')
+        self.RALtoRGBValue.setFont(self.font2)
+        self.RALtoRGBValue.setAlignment(Qt.AlignLeft)
+
+        # RAL to RGB Value
+        self.RALtoRGB = QLabel("[...,...,...]")
+        self.RALtoRGB.setFont(self.font2)
+        self.RALtoRGB.setAlignment(Qt.AlignRight)
+        self.RALtoRGB.setFixedWidth(100)
 
         # Box Operations
         desired_color_box = QGroupBox("Desired Color")
         desired_color_box_layout = QGridLayout()
         desired_color_box.setLayout(desired_color_box_layout)
+        desired_color_box.setFixedWidth(220)
 
         # Adding Widgets
         desired_color_box_layout.addWidget(self.RALTitle, 1, 0)
-        desired_color_box_layout.addWidget(self.RALCombo, 2, 0)
+        desired_color_box_layout.addWidget(self.RALLabel, 2, 0)
+        desired_color_box_layout.addWidget(self.RALCombo, 3, 0)
+        desired_color_box_layout.addWidget(self.RALtoRGBValue, 4, 0)
+        desired_color_box_layout.addWidget(self.RALtoRGB, 4, 1)
 
         # -------------------------------------------------------------------------------------------------------------
         # Camera Elements
@@ -225,6 +248,15 @@ class Window(QWidget):
         r.clear()
         g.clear()
         b.clear()
+
+    def apply(self):
+        RALIndex = self.RALCombo.currentIndex()
+        R_Ral = Try.r_code[RALIndex]
+        G_Ral = Try.g_code[RALIndex]
+        B_Ral = Try.b_code[RALIndex]
+
+        self.RALtoRGB.setText("[" + str(R_Ral) + "," + str(G_Ral)+"," + str(B_Ral) + "]")
+        self.RALLabel.setStyleSheet('color: red; background-color: rgb' + str((R_Ral, G_Ral, B_Ral)))
 
 
 app = QApplication(sys.argv)

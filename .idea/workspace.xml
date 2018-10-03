@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PyQt5_Gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyQt5_Gui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RALtoRGB.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/RALtoRGB.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Try.py" beforeDir="false" afterPath="$PROJECT_DIR$/Try.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +18,8 @@
       <file leaf-file-name="RGB_Detect.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="100" column="110" lean-forward="true" selection-start-line="100" selection-start-column="110" selection-end-line="100" selection-end-column="110" />
+            <state relative-caret-position="1785">
+              <caret line="100" column="110" selection-start-line="100" selection-start-column="110" selection-end-line="100" selection-end-column="110" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#391#946#0" />
@@ -42,13 +41,13 @@
       <file leaf-file-name="PyQt5_Gui.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="189" column="24" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="24" />
+            <state relative-caret-position="493">
+              <caret line="261" column="28" lean-forward="true" selection-start-line="261" selection-start-column="28" selection-end-line="261" selection-end-column="28" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#4003#4190#0" />
-                <element signature="e#4228#4394#0" />
-                <element signature="e#4446#4924#0" />
+                <element signature="e#5113#5300#0" />
+                <element signature="e#5338#5504#0" />
+                <element signature="e#5556#6034#0" />
               </folding>
             </state>
           </provider>
@@ -57,8 +56,8 @@
       <file leaf-file-name="Try.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Try.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+            <state relative-caret-position="105">
+              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -309,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538389785540</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="xmlx file finished. RAL codes integrated to QComboBox.">
+      <created>1538476616301</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1538476616301</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -383,7 +389,8 @@
     <MESSAGE value="Contour control added." />
     <MESSAGE value="Otsu methode added." />
     <MESSAGE value="Bugs fixed, xmlx operation started." />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugs fixed, xmlx operation started." />
+    <MESSAGE value="xmlx file finished. RAL codes integrated to QComboBox." />
+    <option name="LAST_COMMIT_MESSAGE" value="xmlx file finished. RAL codes integrated to QComboBox." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -683,8 +690,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="100" column="110" lean-forward="true" selection-start-line="100" selection-start-column="110" selection-end-line="100" selection-end-column="110" />
+        <state relative-caret-position="1785">
+          <caret line="100" column="110" selection-start-line="100" selection-start-column="110" selection-end-line="100" selection-end-column="110" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#391#946#0" />
@@ -695,20 +702,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Try.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        <state relative-caret-position="105">
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="189" column="24" selection-start-line="189" selection-start-column="24" selection-end-line="189" selection-end-column="24" />
+        <state relative-caret-position="493">
+          <caret line="261" column="28" lean-forward="true" selection-start-line="261" selection-start-column="28" selection-end-line="261" selection-end-column="28" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#4003#4190#0" />
-            <element signature="e#4228#4394#0" />
-            <element signature="e#4446#4924#0" />
+            <element signature="e#5113#5300#0" />
+            <element signature="e#5338#5504#0" />
+            <element signature="e#5556#6034#0" />
           </folding>
         </state>
       </provider>
