@@ -15,49 +15,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RGB_Detect.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="100" column="110" selection-start-line="100" selection-start-column="110" selection-end-line="100" selection-end-column="110" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#391#946#0" />
-                <element signature="e#968#972#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Img_Extraction.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Img_Extraction.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="18" selection-start-column="18" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PyQt5_Gui.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="261" column="28" lean-forward="true" selection-start-line="261" selection-start-column="28" selection-end-line="261" selection-end-column="28" />
+            <state relative-caret-position="257">
+              <caret line="212" column="31" lean-forward="true" selection-start-line="212" selection-start-column="31" selection-end-line="212" selection-end-column="31" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#5113#5300#0" />
-                <element signature="e#5338#5504#0" />
-                <element signature="e#5556#6034#0" />
+                <element signature="e#6197#6363#0" />
+                <element signature="e#7649#9191#0" />
+                <element signature="e#8443#8786#0" />
+                <element signature="e#9362#9585#0" />
+                <element signature="e#9388#9498#0" />
+                <element signature="e#9983#10090#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Try.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Try.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -98,7 +69,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -110,6 +80,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -218,7 +189,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Try.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\uysal\PycharmProjects\Tubitak_5170009\RALtoRGB.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -315,17 +286,24 @@
       <option name="project" value="LOCAL" />
       <updated>1538476616301</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="RAL to RGB converter finished. GUI updated.">
+      <created>1538559524670</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1538559524670</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.102212854" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10695469" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.26185346" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.25431034" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.25215518" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3297414" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -390,17 +368,15 @@
     <MESSAGE value="Otsu methode added." />
     <MESSAGE value="Bugs fixed, xmlx operation started." />
     <MESSAGE value="xmlx file finished. RAL codes integrated to QComboBox." />
-    <option name="LAST_COMMIT_MESSAGE" value="xmlx file finished. RAL codes integrated to QComboBox." />
+    <MESSAGE value="RAL to RGB converter finished. GUI updated." />
+    <option name="LAST_COMMIT_MESSAGE" value="RAL to RGB converter finished. GUI updated." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="11" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Try.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -700,6 +676,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Cable0.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Try.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -709,13 +688,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="261" column="28" lean-forward="true" selection-start-line="261" selection-start-column="28" selection-end-line="261" selection-end-column="28" />
+        <state relative-caret-position="257">
+          <caret line="212" column="31" lean-forward="true" selection-start-line="212" selection-start-column="31" selection-end-line="212" selection-end-column="31" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#5113#5300#0" />
-            <element signature="e#5338#5504#0" />
-            <element signature="e#5556#6034#0" />
+            <element signature="e#6197#6363#0" />
+            <element signature="e#7649#9191#0" />
+            <element signature="e#8443#8786#0" />
+            <element signature="e#9362#9585#0" />
+            <element signature="e#9388#9498#0" />
+            <element signature="e#9983#10090#0" />
           </folding>
         </state>
       </provider>

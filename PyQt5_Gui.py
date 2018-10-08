@@ -3,7 +3,7 @@ import cv2
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QImage, QPixmap, QFont
 from PyQt5.QtWidgets import *
-import Try
+import RALtoRGB
 
 COLOR_ROWS = 80
 COLOR_COLS = 250
@@ -27,6 +27,8 @@ class Window(QWidget):
 
         self.image = None
         self.outImage = None
+        self.countImg = 0
+        self.frameNumber = 0
         self.font1 = QFont("Times", 14)
         self.font2 = QFont("Times", 11)
 
@@ -97,7 +99,7 @@ class Window(QWidget):
 
         # Combo Box
         self.RALCombo = QComboBox()
-        self.RALCombo.addItems(Try.RAL)
+        self.RALCombo.addItems(RALtoRGB.RAL)
         self.RALCombo.currentIndexChanged.connect(self.apply)
         self.RALCombo.setFixedWidth(100)
 
@@ -134,22 +136,40 @@ class Window(QWidget):
         self.imgLabel.setFixedHeight(480)
         self.imgLabel.setFixedWidth(640)
 
-        # Slider for threshold
-        self.trsSlider = QSlider(Qt.Horizontal)
-        self.trsSlider.setMinimum(0)
-        self.trsSlider.setMaximum(255)
-        self.trsSlider.setValue(100)
-        self.trsSlider.setTickInterval(10)
-        self.trsSlider.setTickPosition(QSlider.TicksBelow)
+        # Button for capture image
+        self.capPic = QPushButton("Capture")
+        self.capPic.setFixedSize(80, 40)
+        self.capPic.clicked.connect(self.capture_img)
 
-        # Box Operations
-        img_frame_box = QGroupBox("Camera")
+        # Dialog Button for select folder
+        self.dialogBtn = QToolButton()
+        self.dialogBtn.setText("...")
+        self.dialogBtn.clicked.connect(self.open_file_dialog)
+
+        # Line for put file path in to it
+        self.dialogLine = QLineEdit()
+        self.dialogLine.setEnabled(False)
+
+        # CheckBox
+        self.autoCap = QCheckBox("Capture Automatically")
+
+        # Box1 Operations
+        img_frame_box1 = QGroupBox("Camera")
         img_frame_box_layout = QGridLayout()
-        img_frame_box.setLayout(img_frame_box_layout)
-        img_frame_box.setMinimumWidth(650)
+        img_frame_box1.setLayout(img_frame_box_layout)
+        img_frame_box1.setMinimumWidth(650)
 
         img_frame_box_layout.addWidget(self.imgLabel, 1, 0)
-        img_frame_box_layout.addWidget(self.trsSlider, 2, 0)
+
+        # Box2 Operations
+        img_frame_box2 = QGroupBox()
+        img_frame_box_layout2 = QGridLayout()
+        img_frame_box2.setLayout(img_frame_box_layout2)
+
+        img_frame_box_layout2.addWidget(self.capPic, 1, 0)
+        img_frame_box_layout2.addWidget(self.autoCap, 1, 1)
+        img_frame_box_layout2.addWidget(self.dialogBtn, 1, 3)
+        img_frame_box_layout2.addWidget(self.dialogLine, 1, 2)
 
         # -------------------------------------------------------------------------------------------------------------
         # Box Operations
@@ -162,7 +182,8 @@ class Window(QWidget):
         vbox2.addWidget(desired_color_box)
         vbox2.addStretch(1)
 
-        vbox3.addWidget(img_frame_box)
+        vbox3.addWidget(img_frame_box1)
+        vbox3.addWidget(img_frame_box2)
 
         hbox.addLayout(vbox1)
         hbox.addLayout(vbox2)
@@ -185,7 +206,6 @@ class Window(QWidget):
         self.image = cv2.flip(self.image, 1)
 
         self.color_detect(self.image)
-
         self.display_image(self.and_img, 1)
 
     def display_image(self, img, window):
@@ -205,7 +225,6 @@ class Window(QWidget):
 
     def color_detect(self, img):
         gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        self.trs = self.trsSlider.value()
         ret, thresh_img = cv2.threshold(gray_img, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
         rev_img = (255 - thresh_img)
 
@@ -249,14 +268,33 @@ class Window(QWidget):
         g.clear()
         b.clear()
 
+        self.auto_capture()
+        self.frameNumber += 1
+
     def apply(self):
         RALIndex = self.RALCombo.currentIndex()
-        R_Ral = Try.r_code[RALIndex]
-        G_Ral = Try.g_code[RALIndex]
-        B_Ral = Try.b_code[RALIndex]
+        R_Ral = RALtoRGB.r_code[RALIndex]
+        G_Ral = RALtoRGB.g_code[RALIndex]
+        B_Ral = RALtoRGB.b_code[RALIndex]
 
         self.RALtoRGB.setText("[" + str(R_Ral) + "," + str(G_Ral)+"," + str(B_Ral) + "]")
         self.RALLabel.setStyleSheet('color: red; background-color: rgb' + str((R_Ral, G_Ral, B_Ral)))
+
+    def capture_img(self):
+        if self.dialogLine.text() is not "":
+            cv2.imwrite(self.dialogLine.text() + '/Cable_' + str(self.countImg) + '.png', self.and_img)
+            self.countImg += 1
+        else:
+            self.dialogLine.setText("Please spot folder")
+
+    def open_file_dialog(self):
+        directory = str(QFileDialog.getExistingDirectory())
+        self.dialogLine.setText('{}'.format(directory))
+
+    def auto_capture(self):
+        if self.autoCap.isChecked():
+            if self.frameNumber % 100 == 0:
+                self.capture_img()
 
 
 app = QApplication(sys.argv)
