@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QImage, QPixmap, QFont
 from PyQt5.QtWidgets import *
 import RALtoRGB
+import time
 
 COLOR_ROWS = 80
 COLOR_COLS = 250
@@ -11,6 +12,7 @@ pixels = []
 r = []
 g = []
 b = []
+times = []
 
 red = (0, 0, 255)
 green = (0, 255, 0)
@@ -195,6 +197,7 @@ class Window(QWidget):
         self.show()
 
     def start_webcam(self):
+
         self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
         self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 
@@ -202,11 +205,16 @@ class Window(QWidget):
         self.timer.start(5)
 
     def update_frame(self):
+        start_time = time.time()
         ret, self.image = self.capture.read()
         self.image = cv2.flip(self.image, 1)
 
         self.color_detect(self.image)
         self.display_image(self.and_img, 1)
+        times.append(time.time() - start_time)
+        if len(times) % 30 == 0:
+            print(sum(times))
+            times.clear()
 
     def display_image(self, img, window):
         qformat = QImage.Format_Indexed8

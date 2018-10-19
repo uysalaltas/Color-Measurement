@@ -8,10 +8,9 @@ COLOR_COLS = 250
 colorArray = np.zeros((COLOR_ROWS, COLOR_COLS, 3), dtype=np.uint8)
 colorArray2 = np.zeros((COLOR_ROWS, COLOR_COLS, 3), dtype=np.uint8)
 cv2.imshow('RGB Pixel', colorArray)
-pixels = []
-r = []
-g = []
-b = []
+pixelsR = np.array([], int)
+pixelsG = np.array([], int)
+pixelsB = np.array([], int)
 sumR = 0
 sumG = 0
 sumB = 0
@@ -92,38 +91,44 @@ else:
 
         # -----Drawing Contour-----
         # if cnt != 0:
-        #     im2, contours, hierarchy = cv2.findContours(thresh_img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        #     cv2.drawContours(and_img, contours, -1, red, cnt)
+        #    im2, contours, hierarchy = cv2.findContours(thresh_img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        #    cv2.drawContours(and_img, contours, -1, red, cnt)
 
         # -----RGB pixel operations-----
 
-        for i in range(640):                                                    # Scan 640 pixel
-            px = and_img[100, i]                                                # Put every pixel to "px" in height 100
-            if px[0] > 0:                                                       # If px is different form zero
-                pixels.append(px)                                               # Append in "pixels" array
+        px = and_img[100, :]
+        pixelsR = px[:, [0]]
+        pixelsG = px[:, [1]]
+        pixelsB = px[:, [2]]
 
-        for i in pixels:                                                        # Append RGB values of "pixels" to
-            r.append(i[0])                                                      # different arrays
-            g.append(i[1])
-            b.append(i[2])
+        pixelsR = pixelsR.flatten()
+        pixelsG = pixelsG.flatten()
+        pixelsB = pixelsB.flatten()
 
-        if len(r) != 0:
-            sumR = int(sum(r) / len(r))                                          # Sum all values in r,g,b and divide
-            sumG = int(sum(g) / len(g))                                          # length of array then put in to
-            sumB = int(sum(b) / len(b))                                          # variables
+        maskR = pixelsR > 0
+        maskG = pixelsG > 0
+        maskB = pixelsB > 0
+
+        pixelsR = pixelsR[maskR]
+        pixelsG = pixelsG[maskG]
+        pixelsB = pixelsB[maskB]
+
+        if len(pixelsR) != 0:
+            sumR = int(pixelsR.sum() / len(pixelsR))
+            sumG = int(pixelsG.sum() / len(pixelsG))
+            sumB = int(pixelsB.sum() / len(pixelsB))
 
         sumAll = [sumR, sumG, sumB]
         sumRGB = [sumB, sumG, sumR]
+
+        pixelsR = np.array([], int)
+        pixelsG = np.array([], int)
+        pixelsB = np.array([], int)
 
         colorArray2[:] = sumAll
         cv2.putText(colorArray2, str(sumRGB), (20, COLOR_ROWS - 20),
                     fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.8, color=red)
         cv2.imshow('RGB Average', colorArray2)
-
-        pixels.clear()                                                          # Reset arrays
-        r.clear()
-        g.clear()
-        b.clear()
 
         # -----Show frames-----
 
