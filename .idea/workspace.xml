@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/RGB_Detect.py" line="124" />
+    <bookmark url="file://$PROJECT_DIR$/RGB_Detect.py" line="109" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f41021-dbac-4501-9161-e931d885fa6e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PyQt5_Gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/PyQt5_Gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RALtoRGB.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/RALtoRGB.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB_Detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/RGB_Detect.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,11 +16,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="PyQt5_Gui.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="207" selection-start-line="207" selection-end-line="208" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#6720#6907#0" />
+                <element signature="e#7852#9345#0" />
+                <element signature="e#9376#9734#0" />
+                <element signature="e#9771#10014#0" />
+                <element signature="e#10056#10163#0" />
+                <element signature="e#10201#10308#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="RGB_Detect.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-715">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="1974">
+              <caret line="139" column="31" lean-forward="true" selection-start-line="139" selection-start-column="31" selection-end-line="139" selection-end-column="31" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -34,8 +49,8 @@
       <file leaf-file-name="RGB_Detect_NumPy.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RGB_Detect_NumPy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="148" column="38" selection-start-line="148" selection-start-column="38" selection-end-line="148" selection-end-column="38" />
+            <state relative-caret-position="-1890">
+              <caret line="36" selection-start-line="36" selection-end-line="49" selection-end-column="54" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -43,13 +58,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PyQt5_Gui.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
+      <file leaf-file-name="RGB_Detect_NumPy_Imutils.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2754">
-              <caret line="151" column="37" lean-forward="true" selection-start-line="151" selection-start-column="37" selection-end-line="151" selection-end-column="37" />
+            <state relative-caret-position="42">
+              <caret line="23" column="27" lean-forward="true" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#32#69#0" expanded="true" />
+                <element signature="e#931#1486#0" />
               </folding>
             </state>
           </provider>
@@ -73,10 +89,13 @@
         <option value="$PROJECT_DIR$/Diff.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="C:/tensorflow1/models/research/object_detection/Object_detection_image.py" />
-        <option value="$PROJECT_DIR$/Try.py" />
-        <option value="$PROJECT_DIR$/Try.py" />
-        <option value="$PROJECT_DIR$/RGB_Detect.py" />
         <option value="$PROJECT_DIR$/PyQt5_Gui.py" />
+        <option value="$PROJECT_DIR$/RGB_Detect.py" />
+        <option value="$USER_HOME$/Desktop/fps_demo.py" />
+        <option value="$PROJECT_DIR$/RGB_Detect_NumPy.py" />
+        <option value="$PROJECT_DIR$/Try.py" />
+        <option value="$PROJECT_DIR$/Try.py" />
+        <option value="$USER_HOME$/Desktop/increasing-raspberry-pi-fps/picamera_fps_demo.py" />
       </list>
     </option>
   </component>
@@ -127,25 +146,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PyQt5_Gui">
-    <configuration name="Object_detection_image" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tubitak_5170009" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="C:/tensorflow1/models/research/object_detection" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:/tensorflow1/models/research/object_detection/Object_detection_image.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.RGB_Detect_NumPy_Imutils">
     <configuration name="PyQt5_Gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tubitak_5170009" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,24 +160,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PyQt5_Gui.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="RALtoRGB" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tubitak_5170009" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RALtoRGB.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -200,7 +183,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="Try " type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="RGB_Detect_NumPy" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tubitak_5170009" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -212,26 +195,42 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\uysal\PycharmProjects\Tubitak_5170009\RGB_Detect_NumPy.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RGB_Detect_NumPy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="RGB_Detect_NumPy_Imutils" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Tubitak_5170009" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.RALtoRGB" />
       <item itemvalue="Python.RGB_Detect" />
       <item itemvalue="Python.PyQt5_Gui" />
-      <item itemvalue="Python.Object_detection_image" />
-      <item itemvalue="Python.Try " />
+      <item itemvalue="Python.RGB_Detect_NumPy" />
+      <item itemvalue="Python.RGB_Detect_NumPy_Imutils" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.PyQt5_Gui" />
-        <item itemvalue="Python.Try " />
+        <item itemvalue="Python.RGB_Detect_NumPy_Imutils" />
+        <item itemvalue="Python.RGB_Detect_NumPy" />
         <item itemvalue="Python.RGB_Detect" />
-        <item itemvalue="Python.RALtoRGB" />
-        <item itemvalue="Python.Object_detection_image" />
+        <item itemvalue="Python.PyQt5_Gui" />
       </list>
     </recent_temporary>
   </component>
@@ -323,32 +322,58 @@
       <option name="project" value="LOCAL" />
       <updated>1538998862512</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="NumPy library used for array operation in RGB_Detect_NumPY class.">
+      <created>1539936901966</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1539936901966</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10695469" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12223393" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.26185346" />
+      <window_info anchor="bottom" id="Messages" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50105375" side_tool="true" weight="0.26185346" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.24784483" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3297414" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3297414" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3297414" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3297414" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2952586" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32912722" />
-      <window_info anchor="bottom" id="Messages" order="7" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.10695469" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.24784483" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32912722" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2952586" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3297414" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50105375" side_tool="true" weight="0.26185346" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3297414" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Messages" order="8" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="SHOW_OTHER_BRANCHES" value="true" />
@@ -401,38 +426,15 @@
     <MESSAGE value="xmlx file finished. RAL codes integrated to QComboBox." />
     <MESSAGE value="RAL to RGB converter finished. GUI updated." />
     <MESSAGE value="Auto capture and capture functions added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Auto capture and capture functions added." />
+    <MESSAGE value="NumPy library used for array operation in RGB_Detect_NumPY class." />
+    <option name="LAST_COMMIT_MESSAGE" value="NumPy library used for array operation in RGB_Detect_NumPY class." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="18" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Img_Extraction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RALtoRGB.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2142">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Img_Extraction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RALtoRGB.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -690,16 +692,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Cable0.png" />
-    <entry file="file://$PROJECT_DIR$/RGB_Detect_NumPy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="148" column="38" selection-start-line="148" selection-start-column="38" selection-end-line="148" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RALtoRGB.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -707,22 +699,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="207" selection-start-line="207" selection-end-line="208" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#6720#6907#0" />
+            <element signature="e#7852#9345#0" />
+            <element signature="e#9376#9734#0" />
+            <element signature="e#9771#10014#0" />
+            <element signature="e#10056#10163#0" />
+            <element signature="e#10201#10308#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-715">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="1974">
+          <caret line="139" column="31" lean-forward="true" selection-start-line="139" selection-start-column="31" selection-end-line="139" selection-end-column="31" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
+    <entry file="file://$PROJECT_DIR$/RGB_Detect_NumPy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2754">
-          <caret line="151" column="37" lean-forward="true" selection-start-line="151" selection-start-column="37" selection-end-line="151" selection-end-column="37" />
+        <state relative-caret-position="-1890">
+          <caret line="36" selection-start-line="36" selection-end-line="49" selection-end-column="54" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/fps_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="59" lean-forward="true" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
+          <folding>
+            <element signature="e#95#132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/increasing-raspberry-pi-fps/fps_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-421" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/increasing-raspberry-pi-fps/picamera_fps_demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1323">
+          <caret line="63" column="62" lean-forward="true" selection-start-line="63" selection-start-column="62" selection-end-line="63" selection-end-column="62" />
+          <folding>
+            <element signature="e#32#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="23" column="27" lean-forward="true" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+          <folding>
+            <element signature="e#32#69#0" expanded="true" />
+            <element signature="e#931#1486#0" />
           </folding>
         </state>
       </provider>
