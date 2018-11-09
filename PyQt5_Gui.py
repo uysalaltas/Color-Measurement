@@ -1,19 +1,20 @@
 import sys
 import cv2
+import imutils
+import numpy as np
+import RALtoRGB
+import time
+import pyqtgraph as pg
+
+from collections import Counter, OrderedDict
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QImage, QPixmap, QFont
 from PyQt5.QtWidgets import *
-import RALtoRGB
-import time
+from imutils.video import WebcamVideoStream
 
 COLOR_ROWS = 80
 COLOR_COLS = 250
-pixels = []
-r = []
-g = []
-b = []
 times = []
-
 red = (0, 0, 255)
 green = (0, 255, 0)
 blue = (255, 0, 0)
@@ -25,7 +26,7 @@ class Window(QWidget):
         super().__init__()
 
         self.timer = QTimer(self)
-        self.capture = cv2.VideoCapture(0)
+        self.capture = WebcamVideoStream(src=0).start()
 
         self.image = None
         self.outImage = None
@@ -37,7 +38,10 @@ class Window(QWidget):
         vbox1 = QVBoxLayout()
         vbox2 = QVBoxLayout()
         vbox3 = QVBoxLayout()
-        hbox = QHBoxLayout()
+        vbox4 = QVBoxLayout()
+        hbox1 = QHBoxLayout()
+        hbox2 = QHBoxLayout()
+        vbox = QVBoxLayout()
 
         # -------------------------------------------------------------------------------------------------------------
         # Producing Color Elements
@@ -65,6 +69,16 @@ class Window(QWidget):
         self.rgbValueLabel.setFont(self.font2)
         self.rgbValueLabel.setAlignment(Qt.AlignLeft)
 
+        # LAB Value
+        self.labValue = QLabel()
+        self.labValue.setFont(self.font2)
+        self.labValue.setAlignment(Qt.AlignCenter)
+
+        # LAB Value Label
+        self.labValueLabel = QLabel('LAB Value: ')
+        self.labValueLabel.setFont(self.font2)
+        self.labValueLabel.setAlignment(Qt.AlignLeft)
+
         # Box1 Operations
         rgb_frame_box = QGroupBox("Producing Color")
         rgb_frame_box_layout = QGridLayout()
@@ -72,16 +86,18 @@ class Window(QWidget):
         rgb_frame_box.setMaximumWidth(220)
 
         # Box2 Operations
-        rgb_value_box = QGroupBox("Color Codes")
-        rgb_value_box_layout = QGridLayout()
-        rgb_value_box.setLayout(rgb_value_box_layout)
-        rgb_value_box.setFixedWidth(220)
+        color_value_box = QGroupBox("Color Codes")
+        color_value_box_layout = QGridLayout()
+        color_value_box.setLayout(color_value_box_layout)
+        color_value_box.setFixedWidth(220)
 
         # Adding Widgets
         rgb_frame_box_layout.addWidget(self.rgbTitle, 1, 0)
         rgb_frame_box_layout.addWidget(self.rgbLabel, 2, 0)
-        rgb_value_box_layout.addWidget(self.rgbValueLabel, 1, 0)
-        rgb_value_box_layout.addWidget(self.rgbValue, 1, 1)
+        color_value_box_layout.addWidget(self.rgbValueLabel, 1, 0)
+        color_value_box_layout.addWidget(self.rgbValue, 1, 1)
+        color_value_box_layout.addWidget(self.labValueLabel, 2, 0)
+        color_value_box_layout.addWidget(self.labValue, 2, 1)
 
         # -------------------------------------------------------------------------------------------------------------
         # Desired Color
@@ -174,11 +190,36 @@ class Window(QWidget):
         img_frame_box_layout2.addWidget(self.dialogLine, 1, 2)
 
         # -------------------------------------------------------------------------------------------------------------
+        # Plot
+        # -------------------------------------------------------------------------------------------------------------
+
+        self.plot1 = pg.PlotWidget()
+        self.plot1_curve1 = pg.PlotCurveItem(pen=(1, 1))
+        self.plot1_curve2 = pg.PlotCurveItem(pen=(1, 2))
+        self.plot1_curve3 = pg.PlotCurveItem(pen=(1, 3))
+        self.plot1.addItem(self.plot1_curve1)
+        self.plot1.addItem(self.plot1_curve2)
+        self.plot1.addItem(self.plot1_curve3)
+
+        self.plot2 = pg.PlotWidget()
+        self.plot2_curve1 = pg.PlotCurveItem(pen=(1, 1))
+        self.plot2.addItem(self.plot2_curve1)
+
+        self.plot1.setXRange(0, 255)
+        self.plot1.setYRange(0, 100)
+
+        img_plot_box2 = QGroupBox()
+        img_plot_box_layout2 = QGridLayout()
+        img_plot_box2.setLayout(img_plot_box_layout2)
+        img_plot_box_layout2.addWidget(self.plot1, 0, 0)
+        img_plot_box_layout2.addWidget(self.plot2, 1, 0)
+
+        # -------------------------------------------------------------------------------------------------------------
         # Box Operations
         # -------------------------------------------------------------------------------------------------------------
 
         vbox1.addWidget(rgb_frame_box)
-        vbox1.addWidget(rgb_value_box)
+        vbox1.addWidget(color_value_box)
         vbox1.addStretch(1)
 
         vbox2.addWidget(desired_color_box)
@@ -187,26 +228,28 @@ class Window(QWidget):
         vbox3.addWidget(img_frame_box1)
         vbox3.addWidget(img_frame_box2)
 
-        hbox.addLayout(vbox1)
-        hbox.addLayout(vbox2)
-        hbox.addLayout(vbox3)
+        vbox4.addWidget(img_plot_box2)
 
-        self.setLayout(hbox)
+        hbox1.addLayout(vbox1)
+        hbox1.addLayout(vbox2)
+        hbox1.addLayout(vbox3)
+        hbox2.addLayout(vbox4)
+        vbox.addLayout(hbox1)
+        vbox.addLayout(hbox2)
+
+        self.setLayout(vbox)
         self.setWindowTitle('PyQt5')
         self.start_webcam()
         self.show()
 
     def start_webcam(self):
-
-        self.capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-        self.capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-
         self.timer.timeout.connect(self.update_frame)
         self.timer.start(5)
 
     def update_frame(self):
         start_time = time.time()
-        ret, self.image = self.capture.read()
+        self.image = self.capture.read()
+        self.image = imutils.resize(self.image, width=640, height=480)
         self.image = cv2.flip(self.image, 1)
 
         self.color_detect(self.image)
@@ -216,7 +259,7 @@ class Window(QWidget):
             print(sum(times))
             times.clear()
 
-    def display_image(self, img, window):
+    def display_image(self, img, windows):
         qformat = QImage.Format_Indexed8
         if len(img.shape) == 3:
             if img.shape[2] == 4:
@@ -227,7 +270,7 @@ class Window(QWidget):
         outImage = QImage(img, img.shape[1], img.shape[0], img.strides[0], qformat)
         outImage = outImage.rgbSwapped()
 
-        if window == 1:
+        if windows == 1:
             self.imgLabel.setPixmap(QPixmap.fromImage(outImage))
             self.imgLabel.setScaledContents(True)
 
@@ -243,42 +286,38 @@ class Window(QWidget):
         and_img3 = cv2.bitwise_and(src[2], rev_img)
 
         self.and_img = cv2.merge((and_img1, and_img2, and_img3))
+        self.lab_img = cv2.cvtColor(self.and_img, cv2.COLOR_BGR2Lab)
 
-        for i in range(640):
-            px = self.and_img[100, i]
-            if px[0] > 0:
-                pixels.append(px)
+        sumR, sumG, sumB, pixelsR, pixelsG, pixelsB = self.rgb_value(self.and_img, 100)
+        sumRGB = [sumR, sumG, sumB]
 
-        for i in pixels:
-            r.append(i[0])
-            g.append(i[1])
-            b.append(i[2])
+        sumL, sumA, sumBB, pixelsL, pixelsA, pixelsBB = self.lab_value(self.lab_img, 100)
+        sumLAB = [sumL, sumA, sumBB]
+        x_range = list(range(0, len(pixelsL)))
 
-        sumR = 0
-        sumG = 0
-        sumB = 0
-
-        if len(r) != 0:
-            sumR = int(sum(r) / len(r))
-            sumG = int(sum(g) / len(g))
-            sumB = int(sum(b) / len(b))
-
-        sumAll = [sumB, sumG, sumR]
+        if len(pixelsR) & len(pixelsG) & len(pixelsB) != 0:
+            x1, y1 = self.img_hist(pixelsR)
+            x2, y2 = self.img_hist(pixelsG)
+            x3, y3 = self.img_hist(pixelsB)
 
         # -------------------------------------------------------------------------------------------------------------
-        # RGB Values / Setting text and background color
+        # RGB, LAB Values / Setting text and background color / Plotting them
         # -------------------------------------------------------------------------------------------------------------
-        self.rgbLabel.setStyleSheet('color: red; background-color: rgb' + str((sumB, sumG, sumR)))
-        self.rgbValue.setText(str(sumAll))
+        self.rgbLabel.setStyleSheet('color: red; background-color: rgb' + str((sumR, sumG, sumB)))
+        self.rgbValue.setText(str(sumRGB))
+        self.labValue.setText(str(sumLAB))
 
-        pixels.clear()  # Reset arrays
-        r.clear()
-        g.clear()
-        b.clear()
+        if len(pixelsR) & len(pixelsG) & len(pixelsB) != 0:
+            if self.frameNumber % 100 == 0:
+                self.plot1_curve1.setData(x=list(x1), y=list(y1))
+                self.plot1_curve2.setData(x=list(x2), y=list(y2))
+                self.plot1_curve3.setData(x=list(x3), y=list(y3))
+                self.plot2_curve1.setData(x=x_range, y=pixelsL)
 
         self.auto_capture()
         self.frameNumber += 1
 
+    # Calculate RAL to RGB with using RALtoRGB.py
     def apply(self):
         RALIndex = self.RALCombo.currentIndex()
         R_Ral = RALtoRGB.r_code[RALIndex]
@@ -288,6 +327,7 @@ class Window(QWidget):
         self.RALtoRGB.setText("[" + str(R_Ral) + "," + str(G_Ral)+"," + str(B_Ral) + "]")
         self.RALLabel.setStyleSheet('color: red; background-color: rgb' + str((R_Ral, G_Ral, B_Ral)))
 
+    # Capture snapshot when function is used
     def capture_img(self):
         if self.dialogLine.text() is not "":
             cv2.imwrite(self.dialogLine.text() + '/Cable_' + str(self.countImg) + '.png', self.and_img)
@@ -295,14 +335,85 @@ class Window(QWidget):
         else:
             self.dialogLine.setText("Please spot folder")
 
+    # Open file dialog and choose file path
     def open_file_dialog(self):
         directory = str(QFileDialog.getExistingDirectory())
         self.dialogLine.setText('{}'.format(directory))
 
+    # If frameNumber is greater than 100 take a snapshot
     def auto_capture(self):
         if self.autoCap.isChecked():
             if self.frameNumber % 100 == 0:
                 self.capture_img()
+
+    # Calculate RGB values and sum of this values of image from any row
+    @staticmethod
+    def rgb_value(rgb_img, row):
+        sumR = 0
+        sumG = 0
+        sumB = 0
+        px = rgb_img[row, :]
+        pixelsB = px[:, [0]]
+        pixelsG = px[:, [1]]
+        pixelsR = px[:, [2]]
+
+        pixelsR = pixelsR.flatten()
+        pixelsG = pixelsG.flatten()
+        pixelsB = pixelsB.flatten()
+
+        maskR = pixelsR > 0
+        maskG = pixelsG > 0
+        maskB = pixelsB > 0
+
+        pixelsR = pixelsR[maskR]
+        pixelsG = pixelsG[maskG]
+        pixelsB = pixelsB[maskB]
+
+        if len(pixelsR) & len(pixelsG) & len(pixelsB) != 0:
+            sumR = int(pixelsR.sum() / len(pixelsR))
+            sumG = int(pixelsG.sum() / len(pixelsG))
+            sumB = int(pixelsB.sum() / len(pixelsB))
+
+        return sumR, sumG, sumB, pixelsR, pixelsG, pixelsB
+
+    # Calculate LAB values and sum of this values of image from any row
+    @staticmethod
+    def lab_value(lab_img, row):
+        sumL = 0
+        sumA = 0
+        sumB = 0
+        pix = lab_img[row, :]
+        pixelsL = pix[:, [0]]
+        pixelsA = pix[:, [1]]
+        pixelsB = pix[:, [2]]
+
+        pixelsL = pixelsL.flatten()
+        pixelsA = pixelsA.flatten()
+        pixelsB = pixelsB.flatten()
+
+        maskL = pixelsL > 0
+        maskA = pixelsA > 0
+        maskB = pixelsB > 0
+
+        pixelsL = pixelsL[maskL]
+        pixelsA = pixelsA[maskA]
+        pixelsB = pixelsB[maskB]
+
+        if len(pixelsL) != 0:
+            sumL = int(pixelsL.sum() / len(pixelsL))
+            sumA = int(pixelsA.sum() / len(pixelsA))
+            sumB = int(pixelsB.sum() / len(pixelsB))
+
+        return sumL, sumA, sumB, pixelsL, pixelsA, pixelsB
+
+    # Calculate histogram from pixel row or column
+    @staticmethod
+    def img_hist(value):
+        c = Counter(value)
+        s_c = sorted(c.items(), key=lambda t: t[0])
+        x, y = zip(*s_c)
+
+        return x, y
 
 
 app = QApplication(sys.argv)
