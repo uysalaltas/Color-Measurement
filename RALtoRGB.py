@@ -16,5 +16,5 @@ for r, g, b in zip(paper['B'], paper['C'], paper['D']):
     g_code.append(g.value)
     b_code.append(b.value)
 
-doc.save('RALtoRGB.xlsx')
+# doc.save('RALtoRGB.xlsx')
 doc.close()

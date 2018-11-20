@@ -288,6 +288,11 @@ class Window(QWidget):
         self.and_img = cv2.merge((and_img1, and_img2, and_img3))
         self.lab_img = cv2.cvtColor(self.and_img, cv2.COLOR_BGR2Lab)
 
+        # mask = cv2.inRange(self.lab_img, (0, -300, -300), (100, +300, +300))
+        # imask = mask > 0
+        # L = np.zeros_like(self.and_img, np.uint8)
+        # L[imask] = self.and_img[imask]
+
         sumR, sumG, sumB, pixelsR, pixelsG, pixelsB = self.rgb_value(self.and_img, 100)
         sumRGB = [sumR, sumG, sumB]
 
