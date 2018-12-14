@@ -5,6 +5,7 @@ import numpy as np
 import RALtoRGB
 import time
 import pyqtgraph as pg
+# import RPi.GPIO as GPIO
 
 from collections import Counter, OrderedDict
 from PyQt5.QtCore import Qt, QTimer
@@ -18,6 +19,11 @@ times = []
 red = (0, 0, 255)
 green = (0, 255, 0)
 blue = (255, 0, 0)
+
+# GPIO.setmode(GPIO.BCM)
+# GPIO.setup(24, GPIO.OUT)
+# pwm24 = GPIO.PWM(24, 400)
+# pwm24.start(0)
 
 
 class Window(QWidget):
@@ -171,6 +177,15 @@ class Window(QWidget):
         # CheckBox
         self.autoCap = QCheckBox("Capture Automatically")
 
+        # PWM text
+        self.pwmTxt = QLineEdit()
+        self.pwmTxt.setFixedSize(80, 40)
+
+        # PWM Button
+        self.pwmBtn = QPushButton("Set PWM")
+        self.pwmBtn.setFixedSize(80, 40)
+        self.pwmBtn.clicked.connect(self.set_pwm)
+
         # Box1 Operations
         img_frame_box1 = QGroupBox("Camera")
         img_frame_box_layout = QGridLayout()
@@ -188,6 +203,8 @@ class Window(QWidget):
         img_frame_box_layout2.addWidget(self.autoCap, 1, 1)
         img_frame_box_layout2.addWidget(self.dialogBtn, 1, 3)
         img_frame_box_layout2.addWidget(self.dialogLine, 1, 2)
+        img_frame_box_layout2.addWidget(self.pwmTxt, 2, 1)
+        img_frame_box_layout2.addWidget(self.pwmBtn, 2, 0)
 
         # -------------------------------------------------------------------------------------------------------------
         # Plot
@@ -351,6 +368,10 @@ class Window(QWidget):
             if self.frameNumber % 100 == 0:
                 self.capture_img()
 
+    # Set pwm Text
+    def set_pwm(self):
+        print("PWM")
+
     # Calculate RGB values and sum of this values of image from any row
     @staticmethod
     def rgb_value(rgb_img, row):
@@ -420,7 +441,13 @@ class Window(QWidget):
 
         return x, y
 
+    # @staticmethod
+    # def pwm_control(frq):
+    #     pwm24.ChangeDutyCycle(frq)
 
+
+# pwm24.stop()
+# GPIO.cleanup()
 app = QApplication(sys.argv)
 window = Window()
 sys.exit(app.exec_())
