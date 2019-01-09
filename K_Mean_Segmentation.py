@@ -59,7 +59,7 @@ plt.figure()
 plt.axis("off")
 plt.imshow(frame)
 
-gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
 ret, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
 
 src = cv2.split(frame)
