@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="43f41021-dbac-4501-9161-e931d885fa6e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/K_Mean_Segmentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/K_Mean_Segmentation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Multiple_Color_Calculator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Multiple_Color_Calculator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K_Mean_LAB.py" beforeDir="false" afterPath="$PROJECT_DIR$/K_Mean_LAB.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,8 +52,8 @@
       <file leaf-file-name="RGB_Detect_NumPy_Imutils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="2058">
+              <caret line="105" column="20" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="20" />
               <folding>
                 <element signature="e#32#69#0" expanded="true" />
               </folding>
@@ -65,8 +64,8 @@
       <file leaf-file-name="K_Mean_Segmentation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/K_Mean_Segmentation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1743">
-              <caret line="83" column="57" lean-forward="true" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
+            <state relative-caret-position="1575">
+              <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -77,7 +76,7 @@
       <file leaf-file-name="Multiple_Color_Calculator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Multiple_Color_Calculator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
+            <state relative-caret-position="1218">
               <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
@@ -89,11 +88,20 @@
       <file leaf-file-name="K_Mean_LAB.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/K_Mean_LAB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1932">
-              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+            <state relative-caret-position="1424">
+              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Img_Extraction.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Img_Extraction.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -135,16 +143,16 @@
         <option value="$PROJECT_DIR$/Histogram.py" />
         <option value="$PROJECT_DIR$/uys.py" />
         <option value="$PROJECT_DIR$/blacktea.py" />
-        <option value="$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py" />
         <option value="$PROJECT_DIR$/try.py" />
         <option value="$PROJECT_DIR$/K_Mean_Segmentation.py" />
         <option value="$PROJECT_DIR$/Multiple_Color_Calculator.py" />
+        <option value="$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py" />
         <option value="$PROJECT_DIR$/K_Mean_LAB.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
+    <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1057" />
   </component>
@@ -154,6 +162,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -165,7 +174,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -291,8 +299,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.K_Mean_LAB" />
-        <item itemvalue="Python.try" />
         <item itemvalue="Python.RGB_Detect_NumPy_Imutils" />
+        <item itemvalue="Python.try" />
         <item itemvalue="Python.PyQt5_Gui" />
       </list>
     </recent_temporary>
@@ -427,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545996763455</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Multiple Color Reading&#10;*K Means Clustering method upgraded and added for LAB color space.">
+      <created>1547034408550</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1547034408550</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -440,17 +455,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-7" y="0" width="974" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12118019" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3297414" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5015806" side_tool="true" weight="0.24784483" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2457265" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49894625" weight="0.3297414" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50105375" side_tool="true" weight="0.3297414" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49841937" weight="0.27801725" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3297414" />
-      <window_info anchor="bottom" id="Python Console" order="7" weight="0.3297414" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49947312" weight="0.3297414" />
+      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49894625" weight="0.3297414" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3297414" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947312" weight="0.3297414" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2952586" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -520,7 +535,8 @@
     <MESSAGE value="L channel mask added." />
     <MESSAGE value="Multiple Color Reading&#10;*K_Mean Cluster analyse added for segmentation.&#10;*PWM objects added to GUI" />
     <MESSAGE value="Multiple Color Reading&#10;*Average pixel of multiple color calculator added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Multiple Color Reading&#10;*Average pixel of multiple color calculator added." />
+    <MESSAGE value="Multiple Color Reading&#10;*K Means Clustering method upgraded and added for LAB color space." />
+    <option name="LAST_COMMIT_MESSAGE" value="Multiple Color Reading&#10;*K Means Clustering method upgraded and added for LAB color space." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -731,13 +747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Img_Extraction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="17" column="62" selection-start-line="17" selection-start-column="62" selection-end-line="17" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sklearn/utils/validation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
@@ -774,16 +783,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1743">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6636">
@@ -812,29 +811,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#32#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/K_Mean_Segmentation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1743">
-          <caret line="83" column="57" lean-forward="true" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Multiple_Color_Calculator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="1218">
           <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
@@ -842,10 +821,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/K_Mean_Segmentation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1575">
+          <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2058">
+          <caret line="105" column="20" selection-start-line="105" selection-start-column="17" selection-end-line="105" selection-end-column="20" />
+          <folding>
+            <element signature="e#32#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-672">
+          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Img_Extraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/K_Mean_LAB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1932">
-          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="1424">
+          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

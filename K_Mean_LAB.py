@@ -16,7 +16,7 @@ print("[INFO] sampling THREADED frames from webcam...")
 # Definitions
 # -------------------------------------------------------------------------------------------------------------
 vs = WebcamVideoStream(src=0).start()
-time.sleep(2)
+time.sleep(1)
 fps = FPS().start()
 times = []
 pixel = []
@@ -43,7 +43,17 @@ and_img2 = cv2.bitwise_and(src[1], thresh)
 and_img3 = cv2.bitwise_and(src[2], thresh)
 and_img = cv2.merge((and_img1, and_img2, and_img3))
 lab_img = cv2.cvtColor(and_img, cv2.COLOR_RGB2Lab)
-px = lab_img[100, :]
+
+plt.figure()
+plt.axis("off")
+plt.imshow(and_img)
+
+plt.figure()
+plt.axis("off")
+plt.imshow(lab_img)
+
+p = lab_img[:, [50, 100, 150, 200]]
+px = p.reshape(len(p) * len(p[0]), 3)
 
 for x in px:
     if x[0] != 0 and x[1] != 0 and x[2] != 0:
@@ -83,6 +93,8 @@ plt.figure()
 plt.scatter(data.a[data.label == 0], data.b[data.label == 0], color="red")
 plt.scatter(data.a[data.label == 1], data.b[data.label == 1], color="green")
 plt.scatter(kmeans2.cluster_centers_[:, 0], kmeans2.cluster_centers_[:, 1], color="blue")
+plt.xlabel("A Channel")
+plt.ylabel("B Channel")
 
 # -------------------------------------------------------------------------------------
 
