@@ -1,3 +1,4 @@
+import random
 import sys
 import cv2
 import imutils
@@ -8,6 +9,8 @@ import pyqtgraph as pg
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
 from imutils.video import WebcamVideoStream
 from imutils.video import FPS
 from sklearn.cluster import KMeans
@@ -26,18 +29,32 @@ class Window(QWidget):
         vbox2 = QVBoxLayout()
         vbox3 = QVBoxLayout()
         vbox4 = QVBoxLayout()
+        hbox = QHBoxLayout()
         hbox1 = QHBoxLayout()
         hbox2 = QHBoxLayout()
         vbox = QVBoxLayout()
 
         self.font1 = QFont("Times", 14)
         self.font2 = QFont("Times", 11)
+
+        # -------------------------------------------------------------------------------------------------------------
+        # Toolbar
+        # -------------------------------------------------------------------------------------------------------------
+
+        # self.toolbar = QMenuBar()
+        # exitMenu = self.toolbar.addMenu('File')
+        # exitAction = QAction('Exit', self)
+        # exitAction.triggered.connect(qApp.quit)
+        # exitMenu.addAction(exitAction)
+
         # -------------------------------------------------------------------------------------------------------------
         # Measuring Elements
         # -------------------------------------------------------------------------------------------------------------
 
         # Image Label
         self.imgLabel = QLabel()
+        pixmap1 = QPixmap('v1.png')
+        self.imgLabel.setPixmap(pixmap1)
         self.imgLabel.setFixedHeight(480)
         self.imgLabel.setFixedWidth(640)
 
@@ -51,17 +68,18 @@ class Window(QWidget):
 
         # -------------------------------------------------------------------------------------------------------------
         # Button for capture image
-        self.capPic = QPushButton("Ölçüm")
+        self.capPic = QPushButton("HESAPLA")
         self.capPic.setFixedSize(80, 40)
         self.capPic.clicked.connect(self.measure_color)
 
         # Box2 Operations
-        img_frame_box2 = QGroupBox()
+        img_frame_box2 = QGroupBox("Ölçüm")
         img_frame_box_layout2 = QGridLayout()
         img_frame_box2.setLayout(img_frame_box_layout2)
         img_frame_box2.setFixedSize(100, 170)
 
         img_frame_box_layout2.addWidget(self.capPic, 1, 0)
+        img_frame_box_layout2.setAlignment(Qt.AlignTop)
 
         # -------------------------------------------------------------------------------------------------------------
         # Color1
@@ -71,6 +89,7 @@ class Window(QWidget):
         self.color1Title.setAlignment(Qt.AlignCenter)
 
         self.color1 = QLabel()
+        self.color1.setStyleSheet("background-color: rgb(128, 128, 128)")
         self.color1.setFixedWidth(170)
         self.color1.setFixedHeight(30)
 
@@ -89,6 +108,7 @@ class Window(QWidget):
         self.color2Title.setAlignment(Qt.AlignCenter)
 
         self.color2 = QLabel()
+        self.color2.setStyleSheet("background-color: rgb(128, 128, 128)")
         self.color2.setFixedWidth(170)
         self.color2.setFixedHeight(30)
 
@@ -101,10 +121,10 @@ class Window(QWidget):
         self.labValue2.setAlignment(Qt.AlignLeft)
 
         # Box3 Operations
-        img_frame_box3 = QGroupBox()
+        img_frame_box3 = QGroupBox("Ölçülen Değerler")
         img_frame_box_layout3 = QGridLayout()
         img_frame_box3.setLayout(img_frame_box_layout3)
-        img_frame_box3.setFixedSize(520, 170)
+        img_frame_box3.setFixedSize(555, 170)
 
         img_frame_box_layout3.addWidget(self.color1Title, 1, 1)
         img_frame_box_layout3.addWidget(self.color1, 2, 1)
@@ -117,20 +137,37 @@ class Window(QWidget):
         img_frame_box_layout3.addWidget(self.labValue2, 4, 2)
 
         # -------------------------------------------------------------------------------------------------------------
+        # Plot
+        # -------------------------------------------------------------------------------------------------------------
+
+        self.figure = plt.figure()
+        self.plot1 = FigureCanvas(self.figure)
+
+        img_plot_box1 = QGroupBox("Grafikler")
+        img_plot_box_layout1 = QGridLayout()
+        img_plot_box1.setLayout(img_plot_box_layout1)
+        img_plot_box1.setFixedHeight(500)
+
+        img_plot_box_layout1.addWidget(self.plot1, 0, 0)
+
+        # -------------------------------------------------------------------------------------------------------------
         # GUI Settings
         # -------------------------------------------------------------------------------------------------------------
 
-        hbox2.addWidget(img_frame_box2)
-        hbox2.addWidget(img_frame_box3)
-        hbox2.setAlignment(Qt.AlignLeft)
+        hbox1.addWidget(img_frame_box2)
+        hbox1.addWidget(img_frame_box3)
+        hbox1.setAlignment(Qt.AlignLeft)
 
         vbox1.addWidget(img_frame_box1)
         vbox1.setAlignment(Qt.AlignLeft)
-        vbox1.addLayout(hbox2)
-        vbox1.addStretch(1)
+        vbox1.addLayout(hbox1)
 
-        hbox1.addLayout(vbox1)
-        vbox.addLayout(hbox1)
+        vbox2.addWidget(img_plot_box1)
+        vbox2.setAlignment(Qt.AlignTop)
+
+        hbox.addLayout(vbox1)
+        hbox.addLayout(vbox2)
+        vbox.addLayout(hbox)
 
         self.setLayout(vbox)
         self.setWindowTitle('FOTAM - NURSAN STATİK KABLO ÖLÇÜMÜ')
@@ -189,13 +226,14 @@ class Window(QWidget):
 
         # Show Frame
         # -------------------------------------------------------------------------------------------------------------
-        plt.figure()
-        plt.scatter(data.a[data.label == 0], data.b[data.label == 0], color="red")
-        plt.scatter(data.a[data.label == 1], data.b[data.label == 1], color="green")
-        plt.scatter(kmeans2.cluster_centers_[:, 0], kmeans2.cluster_centers_[:, 1], color="blue")
-        plt.xlabel("A Channel")
-        plt.ylabel("B Channel")
-        plt.show()
+        ax = self.figure.add_subplot(111)
+        ax.clear()
+        ax.scatter(data.a[data.label == 0], data.b[data.label == 0], color="red")
+        ax.scatter(data.a[data.label == 1], data.b[data.label == 1], color="green")
+        ax.scatter(kmeans2.cluster_centers_[:, 0], kmeans2.cluster_centers_[:, 1], color="blue")
+        ax.set_xlabel("A CHANNEL")
+        ax.set_ylabel("B CHANNEL")
+        self.plot1.draw()
 
         print(kmeans2.cluster_centers_)
         c1 = kmeans2.cluster_centers_[0]
@@ -242,7 +280,6 @@ class Window(QWidget):
         self.labValue1.setText("LAB DEĞER: " + str(lab1))
         self.rgbValue2.setText("RGB DEĞER: " + str(rgb2))
         self.labValue2.setText("LAB DEĞER: " + str(lab2))
-
 
         cv2.destroyAllWindows()
         vs.stop()
