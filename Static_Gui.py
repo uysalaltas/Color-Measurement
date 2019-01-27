@@ -19,19 +19,25 @@ from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QImage, QPixmap, QFont
 from PyQt5.QtWidgets import *
 
+times = []
+
 
 class Window(QWidget):
 
     def __init__(self):
         super().__init__()
 
+        self.timer = QTimer(self)
+        self.capture = WebcamVideoStream(src=0).start()
+        self.image = None
+        self.outImage = None
+        self.countImg = 0
+        self.frameNumber = 0
+
         vbox1 = QVBoxLayout()
         vbox2 = QVBoxLayout()
-        vbox3 = QVBoxLayout()
-        vbox4 = QVBoxLayout()
         hbox = QHBoxLayout()
         hbox1 = QHBoxLayout()
-        hbox2 = QHBoxLayout()
         vbox = QVBoxLayout()
 
         self.font1 = QFont("Times", 14)
@@ -51,20 +57,34 @@ class Window(QWidget):
         # Measuring Elements
         # -------------------------------------------------------------------------------------------------------------
 
-        # Image Label
-        self.imgLabel = QLabel()
-        pixmap1 = QPixmap('v1.png')
-        self.imgLabel.setPixmap(pixmap1)
-        self.imgLabel.setFixedHeight(480)
-        self.imgLabel.setFixedWidth(640)
+        # CameraTab Operations
+        self.imgLabel1 = QLabel()
+        self.imgLabel1.setFixedHeight(480)
+        self.imgLabel1.setFixedWidth(640)
 
-        # Box1 Operations
-        img_frame_box1 = QGroupBox("Kablo Görüntüsü")
-        img_frame_box_layout = QGridLayout()
-        img_frame_box1.setLayout(img_frame_box_layout)
-        img_frame_box1.setFixedSize(660, 520)
+        tab_box1 = QGroupBox()
+        tab_box1_layout = QGridLayout()
+        tab_box1.setLayout(tab_box1_layout)
+        tab_box1.setFixedSize(660, 520)
 
-        img_frame_box_layout.addWidget(self.imgLabel, 1, 0)
+        tab_box1_layout.addWidget(self.imgLabel1, 1, 0)
+
+        # SegmentationTab Operations
+        self.imgLabel2 = QLabel()
+        self.imgLabel2.setFixedHeight(480)
+        self.imgLabel2.setFixedWidth(640)
+
+        tab_box2 = QGroupBox()
+        tab_box2_layout = QGridLayout()
+        tab_box2.setLayout(tab_box2_layout)
+        tab_box2.setFixedSize(660, 520)
+
+        tab_box2_layout.addWidget(self.imgLabel2, 1, 0)
+
+        # Box1 - Image Label
+        self.tabWidget = QTabWidget()
+        self.tabWidget.addTab(tab_box1, "Kamera")
+        self.tabWidget.addTab(tab_box2, "Segmentasyon")
 
         # -------------------------------------------------------------------------------------------------------------
         # Button for capture image
@@ -158,7 +178,7 @@ class Window(QWidget):
         hbox1.addWidget(img_frame_box3)
         hbox1.setAlignment(Qt.AlignLeft)
 
-        vbox1.addWidget(img_frame_box1)
+        vbox1.addWidget(self.tabWidget)
         vbox1.setAlignment(Qt.AlignLeft)
         vbox1.addLayout(hbox1)
 
@@ -173,26 +193,51 @@ class Window(QWidget):
         self.setWindowTitle('FOTAM - NURSAN STATİK KABLO ÖLÇÜMÜ')
         self.setGeometry(0, 0, 1280, 720)
         # Function here
+        self.start_webcam()
         self.show()
 
-    def measure_color(self):
+    def start_webcam(self):
+        self.timer.timeout.connect(self.update_frame)
+        self.timer.start(5)
 
+    def update_frame(self):
+        start_time = time.time()
+        self.frame = self.capture.read()
+        self.frame = imutils.resize(self.frame, width=640, height=480)
+
+        self.display_image(self.frame)
+        times.append(time.time() - start_time)
+        if len(times) % 30 == 0:
+            print(sum(times))
+            times.clear()
+
+    def display_image(self, img):
+        qformat = QImage.Format_Indexed8
+        if len(img.shape) == 3:
+            if img.shape[2] == 4:
+                qformat = QImage.Format_RGBA8888
+            else:
+                qformat = QImage.Format_RGB888
+
+        outImage = QImage(img, img.shape[1], img.shape[0], img.strides[0], qformat)
+        outImage = outImage.rgbSwapped()
+
+        self.imgLabel1.setPixmap(QPixmap.fromImage(outImage))
+        self.imgLabel1.setScaledContents(True)
+
+    def measure_color(self):
         # Definitions
         # -------------------------------------------------------------------------------------------------------------
-        vs = WebcamVideoStream(src=0).start()
         time.sleep(1)
         pixel = []
         wcss = []
 
         # Frame Operations and Calculations
         # -------------------------------------------------------------------------------------------------------------
-        frame = vs.read()
-        frame = imutils.resize(frame, width=640, height=480)
-
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
         ret, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
 
-        src = cv2.split(frame)
+        src = cv2.split(self.frame)
 
         and_img1 = cv2.bitwise_and(src[0], thresh)
         and_img2 = cv2.bitwise_and(src[1], thresh)
@@ -257,8 +302,8 @@ class Window(QWidget):
         outImage = QImage(and_img, and_img.shape[1], and_img.shape[0], and_img.strides[0], qformat)
         outImage = outImage.rgbSwapped()
 
-        self.imgLabel.setPixmap(QPixmap.fromImage(outImage))
-        self.imgLabel.setScaledContents(True)
+        self.imgLabel2.setPixmap(QPixmap.fromImage(outImage))
+        self.imgLabel2.setScaledContents(True)
 
         lab1 = np.array([L_mean, c1_a, c1_b])
         lab_r1 = lab1.reshape(1, 1, 3)
@@ -282,7 +327,6 @@ class Window(QWidget):
         self.labValue2.setText("LAB DEĞER: " + str(lab2))
 
         cv2.destroyAllWindows()
-        vs.stop()
 
 
 app = QApplication(sys.argv)

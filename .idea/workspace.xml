@@ -20,8 +20,8 @@
       <file leaf-file-name="Static_Gui.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Static_Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4809">
-              <caret line="229" column="18" selection-start-line="229" selection-start-column="18" selection-end-line="229" selection-end-column="18" />
+            <state relative-caret-position="522">
+              <caret line="265" selection-start-line="265" selection-end-line="265" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -32,13 +32,11 @@
       <file leaf-file-name="PyQt5_Gui.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="333" column="26" lean-forward="true" selection-start-line="333" selection-start-column="26" selection-end-line="333" selection-end-column="26" />
+            <state relative-caret-position="588">
+              <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#9104#9177#0" />
-                <element signature="e#9215#9615#0" />
-                <element signature="e#9668#10147#0" />
+                <element signature="e#10190#12313#0" />
                 <element signature="e#12394#12752#0" />
                 <element signature="e#12834#13077#0" />
                 <element signature="e#13163#13270#0" />
@@ -55,8 +53,8 @@
       <file leaf-file-name="K_Mean_LAB.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/K_Mean_LAB.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1029">
-              <caret line="67" column="29" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="38" />
+            <state relative-caret-position="609">
+              <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -76,11 +74,8 @@
       <file leaf-file-name="RGB_Detect_NumPy_Imutils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="e#32#69#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="147">
+              <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -100,7 +95,7 @@
       <file leaf-file-name="Multiple_Color_Calculator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Multiple_Color_Calculator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="838">
+            <state relative-caret-position="1218">
               <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
@@ -121,6 +116,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>print</find>
+      <find>timer</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,7 +137,6 @@
         <option value="$PROJECT_DIR$/venv/TryBoard.py" />
         <option value="$PROJECT_DIR$/RALtoRGB.py" />
         <option value="$PROJECT_DIR$/TryBoard.py" />
-        <option value="$PROJECT_DIR$/PyQt5_Gui.py" />
         <option value="$PROJECT_DIR$/Img_Extraction.py" />
         <option value="$PROJECT_DIR$/Histogram.py" />
         <option value="$PROJECT_DIR$/uys.py" />
@@ -151,6 +146,7 @@
         <option value="$PROJECT_DIR$/Multiple_Color_Calculator.py" />
         <option value="$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py" />
         <option value="$PROJECT_DIR$/K_Mean_LAB.py" />
+        <option value="$PROJECT_DIR$/PyQt5_Gui.py" />
         <option value="$PROJECT_DIR$/Static_Gui.py" />
       </list>
     </option>
@@ -166,6 +162,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -177,12 +174,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/uysal/PycharmProjects/Tubitak_5170009/PyQt5_Gui.py" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Computer_Temp" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -480,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548158604224</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Multiple Color Reading&#10;* GUI created (V2).">
+      <created>1548192489651</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1548192489651</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView">
@@ -517,19 +520,19 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49841937" weight="0.27801725" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12118019" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49894625" weight="0.3297414" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49841937" weight="0.27801725" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286638" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49894625" weight="0.3297414" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2952586" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49947312" weight="0.3297414" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.3297414" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49947312" weight="0.3297414" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="8" />
@@ -596,11 +599,12 @@
     <MESSAGE value="Multiple Color Reading&#10;*K Means Clustering method upgraded and added for LAB color space." />
     <MESSAGE value="Multiple Color Reading&#10;*Multiple Column added. K-Means accuracy increased." />
     <MESSAGE value="Multiple Color Reading&#10;* GUI created (V1)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Multiple Color Reading&#10;* GUI created (V1)." />
+    <MESSAGE value="Multiple Color Reading&#10;* GUI created (V2)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Multiple Color Reading&#10;* GUI created (V2)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="39" />
+      <option name="time" value="47" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -829,26 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#32#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/K_Mean_Segmentation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/numpy/core/_methods.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="215">
@@ -863,16 +847,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BlackTea.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Multiple_Color_Calculator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="838">
+        <state relative-caret-position="1218">
           <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
@@ -887,15 +864,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/K_Mean_Segmentation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1575">
+          <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/K_Mean_LAB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="333" column="26" lean-forward="true" selection-start-line="333" selection-start-column="26" selection-end-line="333" selection-end-column="26" />
+        <state relative-caret-position="588">
+          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#9104#9177#0" />
-            <element signature="e#9215#9615#0" />
-            <element signature="e#9668#10147#0" />
+            <element signature="e#10190#12313#0" />
             <element signature="e#12394#12752#0" />
             <element signature="e#12834#13077#0" />
             <element signature="e#13163#13270#0" />
@@ -908,23 +913,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/K_Mean_LAB.py">
+    <entry file="file://$PROJECT_DIR$/BlackTea.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1029">
-          <caret line="67" column="29" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="21">
+          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/matplotlib/pyplot.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Static_Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4809">
-          <caret line="229" column="18" selection-start-line="229" selection-start-column="18" selection-end-line="229" selection-end-column="18" />
+        <state relative-caret-position="522">
+          <caret line="265" selection-start-line="265" selection-end-line="265" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
