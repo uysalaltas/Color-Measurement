@@ -9,6 +9,8 @@ import pyqtgraph as pg
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from colormath.color_objects import LabColor
+from colormath.color_diff import *
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 from imutils.video import WebcamVideoStream
@@ -20,6 +22,81 @@ from PyQt5.QtGui import QImage, QPixmap, QFont
 from PyQt5.QtWidgets import *
 
 times = []
+capture = WebcamVideoStream(src=0).start()
+
+
+def color_calculate(frame):
+    pixel = []
+    wcss = []
+
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    ret, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+
+    src = cv2.split(frame)
+
+    and_img1 = cv2.bitwise_and(src[0], thresh)
+    and_img2 = cv2.bitwise_and(src[1], thresh)
+    and_img3 = cv2.bitwise_and(src[2], thresh)
+    and_img = cv2.merge((and_img1, and_img2, and_img3))
+    lab_img = cv2.cvtColor(and_img, cv2.COLOR_BGR2Lab)
+
+    p = lab_img[:, [10, 20, 620, 630]]
+    px = p.reshape(len(p) * len(p[0]), 3)
+
+    for x in px:
+        if x[0] != 0 and x[1] != 0 and x[2] != 0:
+            pixel.append(x)
+
+    L_mean = int(np.mean(pixel, axis=0)[0])
+    pixel2 = np.delete(pixel, 0, axis=1)
+
+    dictionary = {"a": pixel2[:, 0], "b": pixel2[:, 1]}
+    data = pd.DataFrame(dictionary)
+
+    for k in range(1, 5):
+        kmeans = KMeans(n_clusters=k)
+        kmeans.fit(data)
+        wcss.append(kmeans.inertia_)
+
+    kmeans2 = KMeans(n_clusters=2)
+    clusters = kmeans2.fit_predict(data)
+
+    data["label"] = clusters
+
+    c1 = kmeans2.cluster_centers_[0]
+    c2 = kmeans2.cluster_centers_[1]
+
+    c1_a = int(c1[0])
+    c1_b = int(c1[1])
+    c2_a = int(c2[0])
+    c2_b = int(c2[1])
+
+    r_L_mean = int((L_mean*100)/255)
+    r_c1_a = int(c1[0]-128)
+    r_c1_b = int(c1[1]-128)
+    r_c2_a = int(c2[0]-128)
+    r_c2_b = int(c2[1]-128)
+
+    lab1 = np.array([L_mean, c1_a, c1_b])
+    lab_r1 = lab1.reshape(1, 1, 3)
+    lab_r1 = lab_r1.astype('uint8')
+    rgb1 = cv2.cvtColor(lab_r1, cv2.COLOR_Lab2RGB)
+    rgb1 = rgb1.reshape(3)
+
+    r_lab1 = np.array([r_L_mean, r_c1_a, r_c1_b])
+    print(type(r_lab1[0]))
+    print(rgb1, " ", r_lab1)
+
+    lab2 = np.array([L_mean, c2_a, c2_b])
+    lab_r2 = lab2.reshape(1, 1, 3)
+    lab_r2 = lab_r2.astype('uint8')
+    rgb2 = cv2.cvtColor(lab_r2, cv2.COLOR_Lab2RGB)
+    rgb2 = rgb2.reshape(3)
+
+    r_lab2 = np.array([r_L_mean, r_c2_a, r_c2_b])
+    print(rgb2, " ", r_lab2)
+
+    return data, kmeans2, and_img, r_lab1, rgb1, r_lab2, rgb2
 
 
 class Window(QWidget):
@@ -28,11 +105,7 @@ class Window(QWidget):
         super().__init__()
 
         self.timer = QTimer(self)
-        self.capture = WebcamVideoStream(src=0).start()
-        self.image = None
-        self.outImage = None
-        self.countImg = 0
-        self.frameNumber = 0
+        self.frame = None
 
         vbox1 = QVBoxLayout()
         vbox2 = QVBoxLayout()
@@ -171,6 +244,41 @@ class Window(QWidget):
         img_plot_box_layout1.addWidget(self.plot1, 0, 0)
 
         # -------------------------------------------------------------------------------------------------------------
+        # Delta Error
+        # -------------------------------------------------------------------------------------------------------------
+
+        self.errorCalibrate = QPushButton("KALİBRASYON")
+        self.errorCalibrate.setFixedSize(80, 40)
+        self.errorCalibrate.clicked.connect(self.error_calibrate)
+
+        self.measureDeltaE = QPushButton("ÖLÇÜM")
+        self.measureDeltaE.setFixedSize(80, 40)
+        self.measureDeltaE.clicked.connect(self.measure_delta_e)
+
+        self.deltaEColor1 = QLabel(self)
+        self.deltaEColor1.setText("RENK 1 = ")
+
+        self.deltaEResult1 = QLabel(self)
+        self.deltaEResult1.setFixedSize(80, 40)
+
+        self.deltaEColor2 = QLabel(self)
+        self.deltaEColor2.setText("RENK 2 = ")
+
+        self.deltaEResult2 = QLabel(self)
+        self.deltaEResult2.setFixedSize(80, 40)
+
+        img_error_box1 = QGroupBox("Delta E")
+        img_error_box_layout1 = QGridLayout()
+        img_error_box1.setLayout(img_error_box_layout1)
+
+        img_error_box_layout1.addWidget(self.errorCalibrate, 0, 0)
+        img_error_box_layout1.addWidget(self.measureDeltaE, 0, 1)
+        img_error_box_layout1.addWidget(self.deltaEColor1, 1, 0)
+        img_error_box_layout1.addWidget(self.deltaEResult1, 1, 1)
+        img_error_box_layout1.addWidget(self.deltaEColor2, 2, 0)
+        img_error_box_layout1.addWidget(self.deltaEResult2, 2, 1)
+
+        # -------------------------------------------------------------------------------------------------------------
         # GUI Settings
         # -------------------------------------------------------------------------------------------------------------
 
@@ -183,6 +291,7 @@ class Window(QWidget):
         vbox1.addLayout(hbox1)
 
         vbox2.addWidget(img_plot_box1)
+        vbox2.addWidget(img_error_box1)
         vbox2.setAlignment(Qt.AlignTop)
 
         hbox.addLayout(vbox1)
@@ -201,15 +310,15 @@ class Window(QWidget):
         self.timer.start(5)
 
     def update_frame(self):
-        start_time = time.time()
-        self.frame = self.capture.read()
+        # start_time = time.time()
+        self.frame = capture.read()
         self.frame = imutils.resize(self.frame, width=640, height=480)
 
         self.display_image(self.frame)
-        times.append(time.time() - start_time)
-        if len(times) % 30 == 0:
-            print(sum(times))
-            times.clear()
+        # times.append(time.time() - start_time)
+        # if len(times) % 30 == 0:
+        #     print(sum(times))
+        #     times.clear()
 
     def display_image(self, img):
         qformat = QImage.Format_Indexed8
@@ -229,45 +338,10 @@ class Window(QWidget):
         # Definitions
         # -------------------------------------------------------------------------------------------------------------
         time.sleep(1)
-        pixel = []
-        wcss = []
 
         # Frame Operations and Calculations
         # -------------------------------------------------------------------------------------------------------------
-        gray = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
-        ret, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
-
-        src = cv2.split(self.frame)
-
-        and_img1 = cv2.bitwise_and(src[0], thresh)
-        and_img2 = cv2.bitwise_and(src[1], thresh)
-        and_img3 = cv2.bitwise_and(src[2], thresh)
-        and_img = cv2.merge((and_img1, and_img2, and_img3))
-        lab_img = cv2.cvtColor(and_img, cv2.COLOR_BGR2Lab)
-
-        p = lab_img[:, [10, 20, 620, 630]]
-        px = p.reshape(len(p) * len(p[0]), 3)
-
-        for x in px:
-            if x[0] != 0 and x[1] != 0 and x[2] != 0:
-                pixel.append(x)
-
-        L_mean = int(np.mean(pixel, axis=0)[0])
-        print(L_mean)
-        pixel2 = np.delete(pixel, 0, axis=1)
-
-        dictionary = {"a": pixel2[:, 0], "b": pixel2[:, 1]}
-        data = pd.DataFrame(dictionary)
-
-        for k in range(1, 5):
-            kmeans = KMeans(n_clusters=k)
-            kmeans.fit(data)
-            wcss.append(kmeans.inertia_)
-
-        kmeans2 = KMeans(n_clusters=2)
-        clusters = kmeans2.fit_predict(data)
-
-        data["label"] = clusters
+        data, kmeans2, and_img, lab1, rgb1, lab2, rgb2 = color_calculate(self.frame)
 
         # Show Frame
         # -------------------------------------------------------------------------------------------------------------
@@ -279,18 +353,6 @@ class Window(QWidget):
         ax.set_xlabel("A CHANNEL")
         ax.set_ylabel("B CHANNEL")
         self.plot1.draw()
-
-        print(kmeans2.cluster_centers_)
-        c1 = kmeans2.cluster_centers_[0]
-        c2 = kmeans2.cluster_centers_[1]
-
-        c1_a = int(c1[0])
-        c1_b = int(c1[1])
-        c2_a = int(c2[0])
-        c2_b = int(c2[1])
-
-        print("1- A ", c1_a, "B: ", c1_b)
-        print("2- A ", c2_a, "B: ", c2_b)
 
         qformat = QImage.Format_Indexed8
         if len(and_img.shape) == 3:
@@ -305,20 +367,6 @@ class Window(QWidget):
         self.imgLabel2.setPixmap(QPixmap.fromImage(outImage))
         self.imgLabel2.setScaledContents(True)
 
-        lab1 = np.array([L_mean, c1_a, c1_b])
-        lab_r1 = lab1.reshape(1, 1, 3)
-        lab_r1 = lab_r1.astype('uint8')
-        rgb1 = cv2.cvtColor(lab_r1, cv2.COLOR_Lab2RGB)
-        rgb1 = rgb1.reshape(3)
-        print(rgb1, " ", lab1)
-
-        lab2 = np.array([L_mean, c2_a, c2_b])
-        lab_r2 = lab2.reshape(1, 1, 3)
-        lab_r2 = lab_r2.astype('uint8')
-        rgb2 = cv2.cvtColor(lab_r2, cv2.COLOR_Lab2RGB)
-        rgb2 = rgb2.reshape(3)
-        print(rgb2, " ", lab2)
-
         self.color1.setStyleSheet('color: red; background-color: rgb' + str((rgb1[0], rgb1[1], rgb1[2])))
         self.color2.setStyleSheet('color: red; background-color: rgb' + str((rgb2[0], rgb2[1], rgb2[2])))
         self.rgbValue1.setText("RGB DEĞER: " + str(rgb1))
@@ -327,6 +375,22 @@ class Window(QWidget):
         self.labValue2.setText("LAB DEĞER: " + str(lab2))
 
         cv2.destroyAllWindows()
+
+    def error_calibrate(self):
+        data, kmeans, and_img, self.lab1c, rgb1, self.lab2c, rgb2 = color_calculate(self.frame)
+
+    def measure_delta_e(self):
+        data, kmeans, and_img, lab1e, rgb1, lab2e, rgb2 = color_calculate(self.frame)
+
+        color1_c = LabColor(lab_l=self.lab1c[0], lab_a=self.lab1c[1], lab_b=self.lab1c[2])
+        color1_e = LabColor(lab_l=lab1e[0], lab_a=lab1e[1], lab_b=lab1e[2])
+        delta_e_c1 = delta_e_cie2000(color1_c, color1_e)
+        self.deltaEResult1.setText(str(delta_e_c1))
+
+        color2_c = LabColor(lab_l=self.lab2c[0], lab_a=self.lab2c[1], lab_b=self.lab2c[2])
+        color2_e = LabColor(lab_l=lab2e[0], lab_a=lab2e[1], lab_b=lab2e[2])
+        delta_e_c2 = delta_e_cie2000(color2_c, color2_e)
+        self.deltaEResult2.setText(str(delta_e_c2))
 
 
 app = QApplication(sys.argv)
