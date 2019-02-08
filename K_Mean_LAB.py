@@ -8,10 +8,25 @@ import numpy as np
 import imutils
 import cv2
 import time
+import math
+
+
+def angle_calc(a, b, c):
+    V1 = math.sqrt(((b[0] - a[0])**2) + ((b[1] - a[1])**2))
+    V2 = math.sqrt(((c[0] - b[0])**2) + ((c[1] - b[1])**2))
+    
+    AB = (b[0] - a[0]), (b[1] - a[1])
+    BC = (c[0] - b[0]), (c[1] - b[1])
+    
+    ABC = (AB[0] * BC[0]) + (AB[1] * BC[1])
+
+    a = ABC/(V1*V2)
+    angle = math.degrees(math.acos(ABC/(V1*V2)))
+    
+    return angle
 
 
 print("[INFO] sampling THREADED frames from webcam...")
-
 # -------------------------------------------------------------------------------------------------------------
 # Definitions
 # -------------------------------------------------------------------------------------------------------------
@@ -101,6 +116,7 @@ plt.ylabel("B Channel")
 plt.show()
 times.append(time.time() - start_time)
 print(sum(times))
+print(angle_calc((1000, int(wcss[0])), (2000, int(wcss[1])), (3000, int(wcss[2]))))
 times.clear()
 
 cv2.destroyAllWindows()

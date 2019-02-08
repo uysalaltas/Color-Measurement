@@ -25,7 +25,7 @@ times = []
 capture = WebcamVideoStream(src=0).start()
 
 
-def color_calculate(frame):
+def color_calculate_black(frame):
     pixel = []
     wcss = []
 
@@ -97,6 +97,39 @@ def color_calculate(frame):
     print(rgb2, " ", r_lab2)
 
     return data, kmeans2, and_img, r_lab1, rgb1, r_lab2, rgb2
+
+
+def compare_pixel(frame):
+    white = []
+    black = []
+
+    frame1 = frame[0:480, 0:20]
+    frame2 = frame[0:480, 200:220]
+
+    gray1 = cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)
+    gray2 = cv2.cvtColor(frame2, cv2.COLOR_BGR2GRAY)
+
+    ret1, thresh1 = cv2.threshold(gray1, 210, 255, cv2.THRESH_BINARY)
+    ret2, thresh2 = cv2.threshold(gray2, 40, 255, cv2.THRESH_BINARY_INV)
+
+    column_white = thresh1[:, [0, 10]]
+    column_white = column_white.reshape(len(column_white) * len(column_white[0]), 1)
+
+    for a in column_white:
+        if a[0] != 0:
+            white.append(a)
+
+    column_black = thresh2[:, [0, 10]]
+    column_black = column_black.reshape(len(column_black) * len(column_black[0]), 1)
+
+    for b in column_black:
+        if b[0] != 0:
+            black.append(b)
+
+    white_len = len(white)
+    black_len = len(black)
+
+    return white_len, black_len
 
 
 class Window(QWidget):
@@ -341,7 +374,16 @@ class Window(QWidget):
 
         # Frame Operations and Calculations
         # -------------------------------------------------------------------------------------------------------------
-        data, kmeans2, and_img, lab1, rgb1, lab2, rgb2 = color_calculate(self.frame)
+        data, kmeans2, and_img, lab1, rgb1, lab2, rgb2 = color_calculate_black(self.frame)
+        num_pix_w, num_pix_b = compare_pixel(self.frame)
+
+        print(num_pix_w, num_pix_b)
+        diff_pix = num_pix_w - num_pix_b
+
+        if abs(diff_pix) > 20:
+            print("Black Cable Exist")
+        else:
+            print("No Black Cable")
 
         # Show Frame
         # -------------------------------------------------------------------------------------------------------------
@@ -377,10 +419,10 @@ class Window(QWidget):
         cv2.destroyAllWindows()
 
     def error_calibrate(self):
-        data, kmeans, and_img, self.lab1c, rgb1, self.lab2c, rgb2 = color_calculate(self.frame)
+        data, kmeans, and_img, self.lab1c, rgb1, self.lab2c, rgb2 = color_calculate_black(self.frame)
 
     def measure_delta_e(self):
-        data, kmeans, and_img, lab1e, rgb1, lab2e, rgb2 = color_calculate(self.frame)
+        data, kmeans, and_img, lab1e, rgb1, lab2e, rgb2 = color_calculate_black(self.frame)
 
         color1_c = LabColor(lab_l=self.lab1c[0], lab_a=self.lab1c[1], lab_b=self.lab1c[2])
         color1_e = LabColor(lab_l=lab1e[0], lab_a=lab1e[1], lab_b=lab1e[2])

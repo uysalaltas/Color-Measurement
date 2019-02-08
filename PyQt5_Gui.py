@@ -32,7 +32,7 @@ class Window(QWidget):
         super().__init__()
 
         self.timer = QTimer(self)
-        self.capture = WebcamVideoStream(src=0).start()
+        self.capture = WebcamVideoStream(src=1).start()
 
         self.image = None
         self.outImage = None
@@ -270,7 +270,7 @@ class Window(QWidget):
         self.image = cv2.flip(self.image, 1)
 
         self.color_detect(self.image)
-        self.display_image(self.and_img, 1)
+        self.display_image(self.image, 1)
         times.append(time.time() - start_time)
         if len(times) % 30 == 0:
             print(sum(times))
@@ -352,7 +352,7 @@ class Window(QWidget):
     # Capture snapshot when function is used
     def capture_img(self):
         if self.dialogLine.text() is not "":
-            cv2.imwrite(self.dialogLine.text() + '/Cable_' + str(self.countImg) + '.png', self.and_img)
+            cv2.imwrite(self.dialogLine.text() + '/Cable_' + str(self.countImg) + '.png', self.image)
             self.countImg += 1
         else:
             self.dialogLine.setText("Please spot folder")
