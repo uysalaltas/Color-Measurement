@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="43f41021-dbac-4501-9161-e931d885fa6e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color_Mean/calculatecolor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Color_Mean/ColorCluster.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,42 +20,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PyQt5_Gui.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
+      <file leaf-file-name="ColorCluster.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Color_Mean/ColorCluster.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="273" column="24" lean-forward="true" selection-start-line="273" selection-start-column="21" selection-end-line="273" selection-end-column="45" />
+            <state relative-caret-position="334">
+              <caret line="50" column="35" lean-forward="true" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#594#9066#0" />
-                <element signature="e#9104#9177#0" />
-                <element signature="e#9666#10145#0" />
-                <element signature="e#10188#12311#0" />
-                <element signature="e#12392#12750#0" />
-                <element signature="e#12832#13073#0" />
-                <element signature="e#13159#13266#0" />
-                <element signature="e#13361#13468#0" />
-                <element signature="e#13520#13532#0" />
-                <element signature="e#13665#14397#0" />
-                <element signature="e#14530#15236#0" />
-                <element signature="e#15340#15456#0" />
+                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#1795#3046#0" />
+                <element signature="e#3135#3908#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="calculatecolor.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Color_Mean/calculatecolor.py">
+      <file leaf-file-name="TryBoard.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TryBoard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="131" column="49" selection-start-line="131" selection-start-column="49" selection-end-line="131" selection-end-column="49" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-                <element signature="e#669#1056#0" />
-                <element signature="e#1100#1816#0" />
-                <element signature="e#1871#3095#0" />
-                <element signature="e#3184#3957#0" />
-              </folding>
+            <state>
+              <caret column="55" lean-forward="true" selection-start-column="55" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -99,12 +83,15 @@
         <option value="$PROJECT_DIR$/try.py" />
         <option value="$PROJECT_DIR$/K_Mean_Segmentation.py" />
         <option value="$PROJECT_DIR$/Multiple_Color_Calculator.py" />
-        <option value="$PROJECT_DIR$/TryBoard.py" />
         <option value="$PROJECT_DIR$/PyQt5_Gui.py" />
         <option value="$PROJECT_DIR$/RGB_Detect_NumPy_Imutils.py" />
         <option value="$PROJECT_DIR$/K_Mean_LAB.py" />
         <option value="$PROJECT_DIR$/Static_Gui.py" />
+        <option value="$PROJECT_DIR$/Color_Mean/TryBoard.py" />
         <option value="$PROJECT_DIR$/Color_Mean/calculatecolor.py" />
+        <option value="$PROJECT_DIR$/BlackTea.py" />
+        <option value="$PROJECT_DIR$/Color_Mean/ColorCluster.py" />
+        <option value="$PROJECT_DIR$/TryBoard.py" />
       </list>
     </option>
   </component>
@@ -119,7 +106,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -127,10 +113,16 @@
               <item name="Tubitak_5170009" type="b2602c69:ProjectViewProjectNode" />
               <item name="Tubitak_5170009" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Tubitak_5170009" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tubitak_5170009" type="462c0819:PsiDirectoryNode" />
+              <item name="Color_Mean" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -139,6 +131,10 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\uysal\PycharmProjects\Tubitak_5170009" />
+      <recent name="C:\Users\uysal\PycharmProjects\Tubitak_5170009\Color_Mean" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\uysal\PycharmProjects\Tubitak" />
     </key>
@@ -155,62 +151,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.calculatecolor">
-    <configuration name="K_Mean_LAB" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tubitak_5170009" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/K_Mean_LAB.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="PyQt5_Gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tubitak_5170009" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PyQt5_Gui.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="Static_Gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Tubitak_5170009" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Static_Gui.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="calculatecolor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager">
+    <configuration name="ColorCluster" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tubitak_5170009" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -222,24 +164,15 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Color_Mean/calculatecolor.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Color_Mean/ColorCluster.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list>
-      <item itemvalue="Python.K_Mean_LAB" />
-      <item itemvalue="Python.Static_Gui" />
-      <item itemvalue="Python.PyQt5_Gui" />
-      <item itemvalue="Python.calculatecolor" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.calculatecolor" />
-        <item itemvalue="Python.Static_Gui" />
-        <item itemvalue="Python.PyQt5_Gui" />
-        <item itemvalue="Python.K_Mean_LAB" />
+        <item itemvalue="Python.ColorCluster" />
       </list>
     </recent_temporary>
   </component>
@@ -422,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1549619723528</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="New pixel color clustering library written.">
+      <created>1550142263725</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1550142263725</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -441,7 +381,7 @@
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12012645" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49894625" weight="0.3297414" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5015806" side_tool="true" weight="0.3297414" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.21551724" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49789253" weight="0.21551724" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49947312" weight="0.3297414" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49841937" weight="0.3297414" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24973656" />
@@ -542,11 +482,12 @@
     <MESSAGE value="Multiple Color Reading&#10;* GUI created (V3 - Tabs added)." />
     <MESSAGE value="Multiple Color Reading&#10;* GUI created (V4 - Delta E)." />
     <MESSAGE value="Black Cable Measurement added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Black Cable Measurement added." />
+    <MESSAGE value="New pixel color clustering library written." />
+    <option name="LAST_COMMIT_MESSAGE" value="New pixel color clustering library written." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="64" />
+      <option name="time" value="69" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -720,9 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1218">
           <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -740,9 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1575">
           <caret line="83" column="57" selection-start-line="83" selection-start-column="57" selection-end-line="83" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -766,16 +701,6 @@
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BlackTea.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/v1.png">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/matplotlib/axes/_axes.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -805,22 +730,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TryBoard.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Static_Gui.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
-          <folding>
-            <element signature="e#2750#3588#0" />
-            <element signature="e#3647#11511#0" />
-            <element signature="e#11549#11622#0" />
-            <element signature="e#11660#11977#0" />
-            <element signature="e#12021#12469#0" />
-            <element signature="e#14738#14831#0" />
-            <element signature="e#14872#15509#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -835,45 +748,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1405">
           <caret line="76" selection-start-line="76" selection-end-line="76" />
-          <folding>
-            <element signature="e#32#69#0" expanded="true" />
-          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/v1.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/PyQt5_Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="273" column="24" lean-forward="true" selection-start-line="273" selection-start-column="21" selection-end-line="273" selection-end-column="45" />
+        <state relative-caret-position="84">
+          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BlackTea.py" />
+    <entry file="file://$PROJECT_DIR$/Color_Mean/ColorCluster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="50" column="35" lean-forward="true" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#594#9066#0" />
-            <element signature="e#9104#9177#0" />
-            <element signature="e#9666#10145#0" />
-            <element signature="e#10188#12311#0" />
-            <element signature="e#12392#12750#0" />
-            <element signature="e#12832#13073#0" />
-            <element signature="e#13159#13266#0" />
-            <element signature="e#13361#13468#0" />
-            <element signature="e#13520#13532#0" />
-            <element signature="e#13665#14397#0" />
-            <element signature="e#14530#15236#0" />
-            <element signature="e#15340#15456#0" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#1795#3046#0" />
+            <element signature="e#3135#3908#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Color_Mean/calculatecolor.py">
+    <entry file="file://$PROJECT_DIR$/TryBoard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="131" column="49" selection-start-line="131" selection-start-column="49" selection-end-line="131" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#669#1056#0" />
-            <element signature="e#1100#1816#0" />
-            <element signature="e#1871#3095#0" />
-            <element signature="e#3184#3957#0" />
-          </folding>
+        <state>
+          <caret column="55" lean-forward="true" selection-start-column="55" selection-end-column="55" />
         </state>
       </provider>
     </entry>

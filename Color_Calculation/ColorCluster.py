@@ -1,16 +1,14 @@
 import time
 import numpy as np
-import cv2
 import matplotlib.pyplot as plt
 import operator
 from mpl_toolkits.mplot3d import Axes3D
 
 
 class ColorMeanCalculator(object):
-    color_points = {'Red': [41, 58, 44], 'Orange': [50, 35, 52], 'Green': [46, -41, 44], 'White': [100, 0, 0],
-                    'Black': [0, 0, 0], 'Purple': [35, 42, -40], 'Yellow': [84, -15, 77], 'Grey': [40, 0, 0],
-                    'Brown': [38, 10, 60], 'Blue': [20, -3, -79]}
-
+    color_points = {'Red': [104, 186, 172], 'Orange': [127, 163, 180], 'Green': [117, 87, 172], 'White': [255, 128, 128],
+                    'Black': [0, 128, 128], 'Purple': [89, 170, 88], 'Yellow': [214, 113, 205], 'Grey': [102, 128, 128],
+                    'Brown': [96, 138, 188], 'Blue': [51, 125, 49]}
     color_lists = ['Red', 'Orange', 'Green', 'White', 'Black', 'Purple', 'Yellow', 'Grey', 'Brown', 'Blue']
 
     def __init__(self, pixel_array):
@@ -20,8 +18,7 @@ class ColorMeanCalculator(object):
         fig = plt.figure()
         ax = Axes3D(fig)
 
-        values = [x for x in self.color_points.values()]
-        color_array = np.asarray(values)
+        color_array = np.asarray(list(self.color_points.values()))
 
         X = color_array[:, 0]
         Y = color_array[:, 1]
@@ -37,8 +34,7 @@ class ColorMeanCalculator(object):
     def calculate_distance(self):
         final_colors = []
 
-        values = [x for x in self.color_points.values()]
-        color_array = np.asarray(values)
+        color_array = np.asarray(list(self.color_points.values()))
         i = 0
         cluster = []
 
