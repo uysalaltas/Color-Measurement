@@ -20,11 +20,39 @@ class ColorMeanCalculator(object):
 
         color_array = np.asarray(list(self.color_points.values()))
 
-        X = color_array[:, 0]
-        Y = color_array[:, 1]
-        Z = color_array[:, 2]
+        X1 = color_array[:, 0]
+        Y1 = color_array[:, 1]
+        Z1 = color_array[:, 2]
+
+        X2 = self.pixel_array[:, 0]
+        Y2 = self.pixel_array[:, 1]
+        Z2 = self.pixel_array[:, 2]
+
+        ax.scatter(X1, Y1, Z1, c='b', marker='^')
+        ax.scatter(X2, Y2, Z2, c='r', marker='o')
+
+        ax.set_xlim3d(0, 255)
+        ax.set_ylim3d(0, 255)
+        ax.set_zlim3d(0, 255)
+
+        ax.set_xlabel('A Channel')
+        ax.set_ylabel('B Channel')
+        ax.set_zlabel('L Channel')
+
+        plt.show()
+
+    def show_pixel_space(self):
+        fig = plt.figure()
+        ax = Axes3D(fig)
+
+        X = self.pixel_array[:, 0]
+        Y = self.pixel_array[:, 1]
+        Z = self.pixel_array[:, 2]
 
         ax.scatter(X, Y, Z)
+        ax.set_xlim3d(0, 255)
+        ax.set_ylim3d(0, 255)
+        ax.set_zlim3d(0, 255)
         ax.set_xlabel('A Channel')
         ax.set_ylabel('B Channel')
         ax.set_zlabel('L Channel')
@@ -87,7 +115,6 @@ class ColorMeanCalculator(object):
         col2 = color2[0]
 
         if int(color2[1]) < 2:
-            print("Color 2 not exist")
             col2 = None
 
         return col1, col2
@@ -116,13 +143,13 @@ class ColorMeanCalculator(object):
         return de1, de2
 
 
-px = np.random.randint(0, 100, size=(300, 3))
-start_time = time.time()
-test = ColorMeanCalculator(px)
-ca = test.calculate_distance()
-c1, c2 = test.calculate_colors(ca)
-a, b = test.calculate_delta_e(ca, px, color1=c1, color2=c2)
-
-print("Time: ", time.time() - start_time)
-print(c1, c2)
-print("Color1 Distance: ", a, " Color2 Distance: ", b)
+# px = np.random.randint(0, 100, size=(300, 3))
+# start_time = time.time()
+# test = ColorMeanCalculator(px)
+# ca = test.calculate_distance()
+# c1, c2 = test.calculate_colors(ca)
+# a, b = test.calculate_delta_e(ca, px, color1=c1, color2=c2)
+#
+# print("Time: ", time.time() - start_time)
+# print(c1, c2)
+# print("Color1 Distance: ", a, " Color2 Distance: ", b)

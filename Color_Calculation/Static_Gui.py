@@ -1,22 +1,19 @@
-import random
 import sys
 import cv2
 import imutils
 import numpy as np
-import RALtoRGB
 import time
 import pyqtgraph as pg
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from Color_Calculation.ColorCluster import ColorMeanCalculator
 from colormath.color_objects import LabColor
 from colormath.color_diff import *
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 from imutils.video import WebcamVideoStream
-from imutils.video import FPS
 from sklearn.cluster import KMeans
-from collections import Counter, OrderedDict
 from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtGui import QImage, QPixmap, QFont
 from PyQt5.QtWidgets import *
@@ -25,9 +22,8 @@ times = []
 capture = WebcamVideoStream(src=0).start()
 
 
-def color_calculate_black(frame):
+def calculate_pixel(frame):
     pixel = []
-    wcss = []
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     ret, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
@@ -46,6 +42,14 @@ def color_calculate_black(frame):
     for x in px:
         if x[0] != 0 and x[1] != 0 and x[2] != 0:
             pixel.append(x)
+
+    return pixel, and_img
+
+
+def color_calculate_black(frame):
+    wcss = []
+
+    pixel, and_img = calculate_pixel(frame)
 
     L_mean = int(np.mean(pixel, axis=0)[0])
     pixel2 = np.delete(pixel, 0, axis=1)
@@ -140,14 +144,23 @@ class Window(QWidget):
         self.timer = QTimer(self)
         self.frame = None
 
-        vbox1 = QVBoxLayout()
-        vbox2 = QVBoxLayout()
-        hbox = QHBoxLayout()
-        hbox1 = QHBoxLayout()
         vbox = QVBoxLayout()
 
         self.font1 = QFont("Times", 14)
         self.font2 = QFont("Times", 11)
+
+        # -------------------------------------------------------------------------------------------------------------
+        # TAB1
+        # *************************************************************************************************************
+
+        tab1 = QWidget()
+        tab1_layout = QVBoxLayout()
+        tab1.setLayout(tab1_layout)
+
+        t1_vbox1 = QVBoxLayout()
+        t1_vbox2 = QVBoxLayout()
+        t1_hbox = QHBoxLayout()
+        t1_hbox1 = QHBoxLayout()
 
         # -------------------------------------------------------------------------------------------------------------
         # Toolbar
@@ -188,9 +201,9 @@ class Window(QWidget):
         tab_box2_layout.addWidget(self.imgLabel2, 1, 0)
 
         # Box1 - Image Label
-        self.tabWidget = QTabWidget()
-        self.tabWidget.addTab(tab_box1, "Kamera")
-        self.tabWidget.addTab(tab_box2, "Segmentasyon")
+        tabWidget = QTabWidget()
+        tabWidget.addTab(tab_box1, "Kamera")
+        tabWidget.addTab(tab_box2, "Segmentasyon")
 
         # -------------------------------------------------------------------------------------------------------------
         # Button for capture image
@@ -315,21 +328,107 @@ class Window(QWidget):
         # GUI Settings
         # -------------------------------------------------------------------------------------------------------------
 
-        hbox1.addWidget(img_frame_box2)
-        hbox1.addWidget(img_frame_box3)
-        hbox1.setAlignment(Qt.AlignLeft)
+        t1_hbox1.addWidget(img_frame_box2)
+        t1_hbox1.addWidget(img_frame_box3)
+        t1_hbox1.setAlignment(Qt.AlignLeft)
 
-        vbox1.addWidget(self.tabWidget)
-        vbox1.setAlignment(Qt.AlignLeft)
-        vbox1.addLayout(hbox1)
+        t1_vbox1.addWidget(tabWidget)
+        t1_vbox1.setAlignment(Qt.AlignLeft)
+        t1_vbox1.addLayout(t1_hbox1)
 
-        vbox2.addWidget(img_plot_box1)
-        vbox2.addWidget(img_error_box1)
-        vbox2.setAlignment(Qt.AlignTop)
+        t1_vbox2.addWidget(img_plot_box1)
+        t1_vbox2.addWidget(img_error_box1)
+        t1_vbox2.setAlignment(Qt.AlignTop)
 
-        hbox.addLayout(vbox1)
-        hbox.addLayout(vbox2)
-        vbox.addLayout(hbox)
+        t1_hbox.addLayout(t1_vbox1)
+        t1_hbox.addLayout(t1_vbox2)
+
+        tab1_layout.addLayout(t1_hbox)
+
+        # *************************************************************************************************************
+        # TAB1
+        # -------------------------------------------------------------------------------------------------------------
+
+        # -------------------------------------------------------------------------------------------------------------
+        # TAB2
+        # *************************************************************************************************************
+
+        tab2 = QWidget()
+        tab2_layout = QVBoxLayout()
+        tab2.setLayout(tab2_layout)
+
+        t2_vbox1 = QVBoxLayout()
+        t2_vbox2 = QVBoxLayout()
+        t2_hbox = QHBoxLayout()
+
+        # -------------------------------------------------------------------------------------------------------------
+        # Calculate Color Clustering
+        # -------------------------------------------------------------------------------------------------------------
+
+        # Button for dynamic
+        self.calcCon = QPushButton("SÜREKLİ HESAPLA")
+        self.calcCon.setFixedSize(120, 40)
+        self.calcCon.setCheckable(True)
+
+        # Button for static
+        self.calcDir = QPushButton("STATİK HESAPLA")
+        self.calcDir.setFixedSize(120, 40)
+        self.calcDir.clicked.connect(self.static_cluster)
+
+        # Color1
+        self.color1Cluster = QLabel('Renk 1')
+        self.color1Cluster.setFont(self.font1)
+        self.color1Cluster.setAlignment(Qt.AlignLeft)
+
+        # Color2
+        self.color2Cluster = QLabel('Renk 2')
+        self.color2Cluster.setFont(self.font1)
+        self.color2Cluster.setAlignment(Qt.AlignLeft)
+
+        # Color1 Distance
+        self.color1Distance = QLabel('Sapma Miktarı')
+        self.color1Distance.setFont(self.font2)
+        self.color1Distance.setAlignment(Qt.AlignTop)
+
+        # Color2 Distance
+        self.color2Distance = QLabel('Sapma Miktarı')
+        self.color2Distance.setFont(self.font2)
+        self.color2Distance.setAlignment(Qt.AlignTop)
+
+        # Box Operations
+        color_cluster_box1 = QGroupBox("Dinamik Hesaplama")
+        color_cluster_box_layout1 = QGridLayout()
+        color_cluster_box1.setLayout(color_cluster_box_layout1)
+        color_cluster_box1.setFixedSize(300, 150)
+
+        color_cluster_box_layout1.addWidget(self.calcCon, 1, 0)
+        color_cluster_box_layout1.addWidget(self.calcDir, 1, 1)
+        color_cluster_box_layout1.addWidget(self.color1Cluster, 2, 0)
+        color_cluster_box_layout1.addWidget(self.color2Cluster, 2, 1)
+        color_cluster_box_layout1.addWidget(self.color1Distance, 3, 0)
+        color_cluster_box_layout1.addWidget(self.color2Distance, 3, 1)
+
+        # -------------------------------------------------------------------------------------------------------------
+        # GUI Settings
+        # -------------------------------------------------------------------------------------------------------------
+
+        t2_vbox1.addWidget(color_cluster_box1)
+        t2_vbox1.setAlignment(Qt.AlignTop)
+
+        #t2_hbox.addLayout(t2_vbox1)
+        #t2_hbox.addLayout(t2_vbox2)
+
+        tab2_layout.addLayout(t2_vbox1)
+
+        # *************************************************************************************************************
+        # TAB2
+        # -------------------------------------------------------------------------------------------------------------
+
+        tabs = QTabWidget()
+        tabs.addTab(tab1, "K-Means")
+        tabs.addTab(tab2, "Renk Kümeleme")
+
+        vbox.addWidget(tabs)
 
         self.setLayout(vbox)
         self.setWindowTitle('FOTAM - NURSAN STATİK KABLO ÖLÇÜMÜ')
@@ -348,6 +447,10 @@ class Window(QWidget):
         self.frame = imutils.resize(self.frame, width=640, height=480)
 
         self.display_image(self.frame)
+
+        if self.calcCon.isChecked():
+            self.static_cluster()
+
         # times.append(time.time() - start_time)
         # if len(times) % 30 == 0:
         #     print(sum(times))
@@ -433,6 +536,23 @@ class Window(QWidget):
         color2_e = LabColor(lab_l=lab2e[0], lab_a=lab2e[1], lab_b=lab2e[2])
         delta_e_c2 = delta_e_cie2000(color2_c, color2_e)
         self.deltaEResult2.setText(str(delta_e_c2))
+
+    def static_cluster(self):
+        pix, and_img = calculate_pixel(self.frame)
+
+        t = ColorMeanCalculator(pix)
+        ca = t.calculate_distance()
+        c1, c2 = t.calculate_colors(ca)
+        a, b = t.calculate_delta_e(ca, pix, color1=c1, color2=c2)
+
+        self.color1Cluster.setText("Renk 1: " + str(c1))
+        self.color2Cluster.setText("Renk 2: " + str(c2))
+
+        self.color1Distance.setText("Sapma Miktarı: " + str(int(a)))
+        self.color2Distance.setText("Sapma Miktarı: " + str(int(b)))
+
+        print(c1, c2)
+        print("Color1 Distance: ", a, " Color2 Distance: ", b)
 
 
 app = QApplication(sys.argv)
