@@ -149,18 +149,9 @@ class Window(QWidget):
         self.font1 = QFont("Times", 14)
         self.font2 = QFont("Times", 11)
 
-        # -------------------------------------------------------------------------------------------------------------
-        # TAB1
-        # *************************************************************************************************************
-
-        tab1 = QWidget()
-        tab1_layout = QVBoxLayout()
-        tab1.setLayout(tab1_layout)
-
-        t1_vbox1 = QVBoxLayout()
-        t1_vbox2 = QVBoxLayout()
-        t1_hbox = QHBoxLayout()
-        t1_hbox1 = QHBoxLayout()
+        vbox1 = QVBoxLayout()
+        hbox = QHBoxLayout()
+        hbox1 = QHBoxLayout()
 
         # -------------------------------------------------------------------------------------------------------------
         # Toolbar
@@ -276,6 +267,13 @@ class Window(QWidget):
         img_frame_box_layout3.addWidget(self.labValue2, 4, 2)
 
         # -------------------------------------------------------------------------------------------------------------
+        # TAB1
+        # *************************************************************************************************************
+
+        tab1 = QWidget()
+        tab1_layout = QVBoxLayout()
+        tab1.setLayout(tab1_layout)
+
         # Plot
         # -------------------------------------------------------------------------------------------------------------
 
@@ -289,7 +287,6 @@ class Window(QWidget):
 
         img_plot_box_layout1.addWidget(self.plot1, 0, 0)
 
-        # -------------------------------------------------------------------------------------------------------------
         # Delta Error
         # -------------------------------------------------------------------------------------------------------------
 
@@ -324,27 +321,6 @@ class Window(QWidget):
         img_error_box_layout1.addWidget(self.deltaEColor2, 2, 0)
         img_error_box_layout1.addWidget(self.deltaEResult2, 2, 1)
 
-        # -------------------------------------------------------------------------------------------------------------
-        # GUI Settings
-        # -------------------------------------------------------------------------------------------------------------
-
-        t1_hbox1.addWidget(img_frame_box2)
-        t1_hbox1.addWidget(img_frame_box3)
-        t1_hbox1.setAlignment(Qt.AlignLeft)
-
-        t1_vbox1.addWidget(tabWidget)
-        t1_vbox1.setAlignment(Qt.AlignLeft)
-        t1_vbox1.addLayout(t1_hbox1)
-
-        t1_vbox2.addWidget(img_plot_box1)
-        t1_vbox2.addWidget(img_error_box1)
-        t1_vbox2.setAlignment(Qt.AlignTop)
-
-        t1_hbox.addLayout(t1_vbox1)
-        t1_hbox.addLayout(t1_vbox2)
-
-        tab1_layout.addLayout(t1_hbox)
-
         # *************************************************************************************************************
         # TAB1
         # -------------------------------------------------------------------------------------------------------------
@@ -357,11 +333,6 @@ class Window(QWidget):
         tab2_layout = QVBoxLayout()
         tab2.setLayout(tab2_layout)
 
-        t2_vbox1 = QVBoxLayout()
-        t2_vbox2 = QVBoxLayout()
-        t2_hbox = QHBoxLayout()
-
-        # -------------------------------------------------------------------------------------------------------------
         # Calculate Color Clustering
         # -------------------------------------------------------------------------------------------------------------
 
@@ -399,7 +370,7 @@ class Window(QWidget):
         color_cluster_box1 = QGroupBox("Dinamik Hesaplama")
         color_cluster_box_layout1 = QGridLayout()
         color_cluster_box1.setLayout(color_cluster_box_layout1)
-        color_cluster_box1.setFixedSize(300, 150)
+
 
         color_cluster_box_layout1.addWidget(self.calcCon, 1, 0)
         color_cluster_box_layout1.addWidget(self.calcDir, 1, 1)
@@ -408,27 +379,36 @@ class Window(QWidget):
         color_cluster_box_layout1.addWidget(self.color1Distance, 3, 0)
         color_cluster_box_layout1.addWidget(self.color2Distance, 3, 1)
 
+        # *************************************************************************************************************
+        # TAB2
+        # -------------------------------------------------------------------------------------------------------------
+
         # -------------------------------------------------------------------------------------------------------------
         # GUI Settings
         # -------------------------------------------------------------------------------------------------------------
 
-        t2_vbox1.addWidget(color_cluster_box1)
-        t2_vbox1.setAlignment(Qt.AlignTop)
+        hbox1.addWidget(img_frame_box2)
+        hbox1.addWidget(img_frame_box3)
+        hbox1.setAlignment(Qt.AlignLeft)
 
-        #t2_hbox.addLayout(t2_vbox1)
-        #t2_hbox.addLayout(t2_vbox2)
+        vbox1.addWidget(tabWidget)
+        vbox1.setAlignment(Qt.AlignLeft)
+        vbox1.addLayout(hbox1)
 
-        tab2_layout.addLayout(t2_vbox1)
+        tab1_layout.addWidget(img_plot_box1)
+        tab1_layout.addWidget(img_error_box1)
+        tab1_layout.setAlignment(Qt.AlignTop)
 
-        # *************************************************************************************************************
-        # TAB2
-        # -------------------------------------------------------------------------------------------------------------
+        tab2_layout.addWidget(color_cluster_box1)
+        tab2_layout.setAlignment(Qt.AlignTop)
 
         tabs = QTabWidget()
         tabs.addTab(tab1, "K-Means")
         tabs.addTab(tab2, "Renk Kümeleme")
 
-        vbox.addWidget(tabs)
+        hbox.addLayout(vbox1)
+        hbox.addWidget(tabs)
+        vbox.addLayout(hbox)
 
         self.setLayout(vbox)
         self.setWindowTitle('FOTAM - NURSAN STATİK KABLO ÖLÇÜMÜ')
