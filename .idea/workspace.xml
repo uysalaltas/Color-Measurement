@@ -4,7 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/RGB_Detect.py" line="109" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43f41021-dbac-4501-9161-e931d885fa6e" name="Default" comment="" />
+    <list default="true" id="43f41021-dbac-4501-9161-e931d885fa6e" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Color_Calculation/ColorCluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/Color_Calculation/ColorCluster.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ColorCluster.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ColorCluster.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Color_Calculation/ColorCluster.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2457">
-              <caret line="121" selection-start-line="121" selection-end-line="121" />
+            <state relative-caret-position="292">
+              <caret line="96" column="24" lean-forward="true" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -29,29 +32,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Static_Gui.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Static_Gui.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Color_Calculation/Static_Gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="-1155">
+              <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#1362#2777#0" />
                 <element signature="e#2810#3648#0" />
                 <element signature="e#17841#17934#0" />
                 <element signature="e#17975#18612#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TryBoard.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TryBoard.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
-              <folding>
-                <element signature="e#0#62#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,8 +98,8 @@
         <option value="$PROJECT_DIR$/Color_Mean/ColorCluster.py" />
         <option value="$PROJECT_DIR$/TryBoard.py" />
         <option value="$PROJECT_DIR$/Static_Gui.py" />
-        <option value="$PROJECT_DIR$/Color_Calculation/ColorCluster.py" />
         <option value="$PROJECT_DIR$/Color_Calculation/Static_Gui.py" />
+        <option value="$PROJECT_DIR$/Color_Calculation/ColorCluster.py" />
       </list>
     </option>
   </component>
@@ -170,7 +161,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Static_Gui">
+  <component name="RunManager" selected="Python.ColorCluster">
     <configuration name="ColorCluster" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tubitak_5170009" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -232,9 +223,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ColorCluster" />
         <item itemvalue="Python.Static_Gui" />
         <item itemvalue="Python.TryBoard" />
-        <item itemvalue="Python.ColorCluster" />
       </list>
     </recent_temporary>
   </component>
@@ -452,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552423293506</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Explanation updated for color clustering.">
+      <created>1552696560133</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1552696560134</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TodoView">
@@ -466,8 +464,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12012645" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12012645" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49894625" weight="0.3297414" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50263435" side_tool="true" weight="0.28448275" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49736565" weight="0.28448275" />
@@ -548,7 +547,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Bugs and headlines are fixed." />
     <MESSAGE value="Layout operations changed and fixed." />
     <MESSAGE value="Contour control added." />
     <MESSAGE value="Otsu methode added." />
@@ -573,21 +571,15 @@
     <MESSAGE value="Just little changes." />
     <MESSAGE value="Extra tabs added. New version" />
     <MESSAGE value="Tabs position changed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tabs position changed." />
+    <MESSAGE value="Explanation updated for color clustering." />
+    <option name="LAST_COMMIT_MESSAGE" value="Explanation updated for color clustering." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="84" />
+      <option name="time" value="85" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Img_Extraction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RGB_Detect.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -838,23 +830,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Color_Calculation/notebook.tex">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/TryBoard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
+        <state relative-caret-position="567">
           <caret line="27" selection-start-line="27" selection-end-line="27" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Color_Calculation/ColorCluster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2457">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -867,14 +849,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Color_Calculation/Static_Gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="-1155">
+          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#1362#2777#0" />
             <element signature="e#2810#3648#0" />
             <element signature="e#17841#17934#0" />
             <element signature="e#17975#18612#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Color_Calculation/ColorCluster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="96" column="24" lean-forward="true" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>

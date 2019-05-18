@@ -82,33 +82,15 @@ class ColorMeanCalculator(object):
         return final_colors
 
     def calculate_colors(self, color_array):
-        color_count = {'Red': 0, 'Orange': 0, 'Green': 0, 'White': 0, 'Black': 0, 'Purple': 0, 'Yellow': 0, 'Grey': 0,
-                       'Brown': 0, 'Blue': 0}
 
+        color_count = {}
         for x in color_array:
-            if x == 'Red':
-                color_count['Red'] += 1
-            if x == 'Orange':
-                color_count['Orange'] += 1
-            if x == 'Green':
-                color_count['Green'] += 1
-            if x == 'White':
-                color_count['White'] += 1
-            if x == 'Black':
-                color_count['Black'] += 1
-            if x == 'Purple':
-                color_count['Purple'] += 1
-            if x == 'Yellow':
-                color_count['Yellow'] += 1
-            if x == 'Grey':
-                color_count['Grey'] += 1
-            if x == 'Brown':
-                color_count['Brown'] += 1
-            if x == 'Blue':
-                color_count['Blue'] += 1
+            if x not in color_count:
+                color_count[x] = 1
+            else:
+                color_count[x] += 1
 
         color_count = sorted(color_count.items(), key=operator.itemgetter(1), reverse=True)
-        print(color_count)
         color1 = color_count[0]
         color2 = color_count[1]
         col1 = color1[0]
